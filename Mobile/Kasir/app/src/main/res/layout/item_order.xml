@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/imgOrderItem"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/indomie_rendang"
+            android:scaleType="centerCrop"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/tvOrderItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imgOrderItem"
+            android:text="Indomie Rendang"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:id="@+id/tvOrderItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvOrderItemName"
+            android:layout_toEndOf="@id/imgOrderItem"
+            android:text="Rp. 10.000"
+            android:textColor="@android:color/darker_gray"/>
+
+        <TextView
+            android:id="@+id/tvOrderItemNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvOrderItemPrice"
+            android:layout_toEndOf="@id/imgOrderItem"
+            android:text="Jangan terlalu pedas"
+            android:textSize="12sp"
+            android:textStyle="italic"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+
+            <Button
+                android:id="@+id/btnDecrement"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="-"/>
+            <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
+            <Button
+                android:id="@+id/btnIncrement"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:text="+"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/tvOrderItemNotes"
+            android:layout_marginTop="8dp"/> </RelativeLayout>
+</androidx.cardview.widget.CardView>

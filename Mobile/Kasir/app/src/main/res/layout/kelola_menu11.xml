@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menuspv"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/LogoKedaiTemeji"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kedai Temeji"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/search_box"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="Search"
+                android:textColorHint="#A0A0A0"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:background="@drawable/search"
+                android:drawableStart="@drawable/cari"
+                android:drawablePadding="8dp"
+                android:singleLine="true"
+                android:inputType="text"
+                android:layout_marginLeft="30dp"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/btn_add_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="#FF7F24"
+                android:paddingHorizontal="16dp"
+                android:text="+ Add Product"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sidebar_layout"
+        android:layout_width="160dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/sidebar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="f5f5f5"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/menu_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dashboard"
+                android:drawableStart="@drawable/dashboard"
+                android:drawablePadding="12dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="#333333"
+                android:background="@drawable/a_sidebar_top"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/menu_kelola_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kelola Menu"
+                android:drawableStart="@drawable/kelola"
+                android:drawablePadding="12dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="#333333"
+                android:background="@drawable/a_sidebar_center"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/menu_kelola_wifi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kelola Wifi"
+                android:drawableStart="@drawable/wifi"
+                android:drawablePadding="12dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:textColor="#333333"
+                android:layout_marginLeft="5dp"
+                android:textSize="14sp"
+                android:background="@drawable/a_sidebar_bottom"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kembali"
+                android:textColor="#FFFFFF"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="#FF4B4B"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/menuspv"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sidebar_layout"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout">
+
+        <include
+            layout="@layout/a_kelola_wifi" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

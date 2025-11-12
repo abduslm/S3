@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <!-- Catatan: Pastikan semua drawable yang direferensikan (@drawable/...) sudah ada di folder res/drawable proyek Anda. -->
+
+    <!-- Sidebar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sidebar_layout"
+        android:layout_width="160dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/top_bar"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!-- Menu: Dashboard -->
+
+        <TextView
+            android:id="@+id/menu_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:drawableStart="@drawable/dashboard"
+            android:drawablePadding="12dp"
+            android:paddingStart="14dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="Dashboard"
+            android:textColor="#5F5F5F"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_app_name" />
+
+        <!-- Menu: Kelola Menu (Aktif) -->
+        <TextView
+            android:id="@+id/menu_kelola_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1A5F8E"
+            android:drawableStart="@drawable/kelola"
+            android:drawablePadding="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:paddingStart="14dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="Kelola Menu"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menu_dashboard" />
+
+
+        <!-- Menu: Kelola Wifi -->
+        <TextView
+            android:id="@+id/menu_kelola_wifi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/wifi"
+            android:drawablePadding="12dp"
+            android:paddingStart="14dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="Kelola Wifi"
+            android:textColor="#5F5F5F"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menu_kelola_menu" />
+
+        <!-- Tombol Kembali -->
+        <Button
+            android:id="@+id/btn_kembali"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="#FF6B6B"
+            android:text="Kembali"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Konten Utama -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F5F5F5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sidebar_layout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Bar Atas -->
+        <LinearLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="#FFFFFF"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Logo / Nama App -->
+            <!-- Logo + Nama Aplikasi -->
+            <ImageView
+                android:id="@+id/logoo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/LogoKedaiTemeji"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kedai Temeji"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/logoo"
+                app:layout_constraintTop_toTopOf="@id/logoo"
+                app:layout_constraintBottom_toBottomOf="@id/logoo"
+                app:layout_constraintVertical_bias="0.5"/>
+
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/search"
+                android:drawableStart="@drawable/cari"
+                android:drawablePadding="8dp"
+                android:hint="Search"
+                android:paddingHorizontal="12dp" />
+
+            <Button
+                android:id="@+id/btn_add_product"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="#FF7F24"
+                android:paddingHorizontal="16dp"
+                android:text="+ Add Product"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Card Table -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_bar">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:padding="8dp"
+                    android:stretchColumns="0">
+
+
+                    <!-- ===== Header Tabel ===== -->
+                    <TableRow
+                        android:background="#F8F8F8"
+                        android:padding="6dp">
+
+                        <TextView
+                            android:padding="4dp"
+                            android:text="Product"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:padding="4dp"
+                            android:text="Category"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:padding="4dp"
+                            android:text="Status"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:padding="4dp"
+                            android:text="Product ID"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:padding="4dp"
+                            android:gravity="center"
+                            android:text="Quantity"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:padding="4dp"
+                            android:gravity="center"
+                            android:text="Price"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:padding="4dp"
+                            android:gravity="center"
+                            android:text="Action"
+                            android:textStyle="bold" />
+                    </TableRow>
+
+                    <!-- ===== Isi Baris 1: Susu Sirup (dengan Image) ===== -->
+                    <TableRow
+                        android:background="#FFFFFF"
+                        android:paddingVertical="8dp">
+
+                        <!-- Kolom Product dengan Gambar -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="4dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/sirupsusu"
+                                tools:ignore="ContentDescription" />
+                            <!-- TODO: Ganti ic_menu_gallery dengan drawable produk yang sesuai (e.g., @drawable/ic_susu_sirup) -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                android:text="Susu Sirup" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="Minuman" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="In Stock"
+                            android:textColor="#00A000" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="M001" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="50" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="Rp.20.000" />
+
+                        <!-- Kolom Action (Edit | Delete) -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:padding="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Edit"
+                                android:textColor="#00A000"
+                                android:drawablePadding="4dp"
+                                android:paddingEnd="8dp" />
+                            <!-- TODO: Tambahkan drawableStart untuk ikon Edit (@drawable/ic_edit) -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Delete"
+                                android:textColor="#FF0000"
+                                android:drawablePadding="4dp" />
+                            <!-- TODO: Tambahkan drawableStart untuk ikon Delete (@drawable/ic_delete) -->
+                        </LinearLayout>
+
+                    </TableRow>
+
+                    <!-- ===== Isi Baris 2: Susu Dancow (dengan Image) ===== -->
+                    <TableRow
+                        android:background="#FFFFFF"
+                        android:paddingVertical="8dp">
+
+                        <!-- Kolom Product dengan Gambar -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="4dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/susu_dancow"
+                                tools:ignore="ContentDescription" />
+                            <!-- TODO: Ganti ic_menu_gallery dengan drawable produk yang sesuai (e.g., @drawable/ic_susu_dancow) -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10sp"
+                                android:text="Susu Dancow"/>
+                        </LinearLayout>
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="Minuman"/>
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="In Stock"
+                            android:textColor="#00A000" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="M002" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="50" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="Rp.12.000" />
+
+                        <!-- Kolom Action (Edit | Delete) -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:padding="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Edit"
+                                android:textColor="#00A000"
+                                android:drawablePadding="4dp"
+                                android:paddingEnd="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Delete"
+                                android:textColor="#FF0000"
+                                android:drawablePadding="4dp" />
+                        </LinearLayout>
+                    </TableRow>
+
+                    <!-- ===== Isi Baris 3: Milo (dengan Image) ===== -->
+                    <TableRow
+                        android:background="#FFFFFF"
+                        android:paddingVertical="8dp">
+
+                        <!-- Kolom Product dengan Gambar -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="4dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/milo"
+                                tools:ignore="ContentDescription" />
+                            <!-- TODO: Ganti ic_menu_gallery dengan drawable produk yang sesuai (e.g., @drawable/ic_milo) -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Milo" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="Minuman" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="In Stock"
+                            android:textColor="#00A000" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="M003" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="50" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="Rp.14.000" />
+
+                        <!-- Kolom Action (Edit | Delete) -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:padding="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Edit"
+                                android:textColor="#00A000"
+                                android:drawablePadding="4dp"
+                                android:paddingEnd="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Delete"
+                                android:textColor="#FF0000"
+                                android:drawablePadding="4dp" />
+                        </LinearLayout>
+                    </TableRow>
+
+                    <!-- ===== Isi Baris 4: Susu Sapi (dengan Image - Ditambahkan dari Screenshot) ===== -->
+                    <TableRow
+                        android:background="#FFFFFF"
+                        android:paddingVertical="8dp">
+
+                        <!-- Kolom Product dengan Gambar -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingStart="4dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:src="@drawable/susu_sapi"
+                                tools:ignore="ContentDescription" />
+                            <!-- TODO: Ganti ic_menu_gallery dengan drawable produk yang sesuai (e.g., @drawable/ic_susu_sapi) -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Susu Sapi" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="Minuman" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="In Stock"
+                            android:textColor="#00A000" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:padding="4dp"
+                            android:text="M004" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="50" />
+
+                        <TextView
+                            android:textSize="12sp"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:text="Rp.16.000" />
+
+                        <!-- Kolom Action (Edit | Delete) -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:padding="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Edit"
+                                android:textColor="#00A000"
+                                android:drawablePadding="4dp"
+                                android:paddingEnd="8dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:text="Delete"
+                                android:textColor="#FF0000"
+                                android:drawablePadding="4dp" />
+                        </LinearLayout>
+                    </TableRow>
+
+                </TableLayout>
+
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

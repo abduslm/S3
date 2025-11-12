@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Kasir</string>
+    <string name="signin_button">Sign In</string>
+</resources>

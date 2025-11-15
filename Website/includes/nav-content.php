@@ -9,8 +9,10 @@ if(isset($_POST['page'])) {
     // Validasi dan sanitize input
     $allowed_pages = array(
         'dashboard',
-        'user-add', 
-        'user-list',
+        'user-add-mobile', 
+        'user-list-mobile',
+        'user-add-web',
+        'user-list-web',
         'activity-history'
     );
     

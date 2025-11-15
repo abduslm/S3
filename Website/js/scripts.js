@@ -164,8 +164,15 @@ function actionLogin() {
                 $("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
                 $("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
                 $btn.button("reset");
-
-                window.location.href = "heade.php";
+				
+				if(data.level === "Admin"){
+					window.location.href = "header-adm.php";
+				} else if(data.level === "Developer"){
+					window.location.href = "header-dev.php";
+				}else{
+					window.location.href = "index.php";
+				}
+				
             },
             error: function(xhr, status, error){
                 $("#response .message").html("<strong>Error</strong>: Terjadi kesalahan sistem. Silakan coba lagi.");

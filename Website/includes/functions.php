@@ -37,7 +37,7 @@ function getUsers(string $plat) {
 
 		while($row = $results->fetch_assoc()) {
 
-			if($plat='website'){
+			if($plat=='website'){
 				print '
 			    <tr>
 			    	<td>'.$row['Nama'].'</td>
@@ -45,11 +45,11 @@ function getUsers(string $plat) {
 					<td>'.$row["Email"].'</td>
 					<td>'.$row["NoHp"].'</td>
 				    <td>'.$row["level"].'</td>
-					<td>'.$row["Status"].'</td
+					<td>'.$row["Status"].'</td>
 				    <td><a href="../user-edit-web.php?id='.$row["id_userWeb"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a data-user-id="'.$row["id_userWeb"].'" class="btn btn-danger btn-xs delete-user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 			    </tr>
 		    ';
-			}elseif($plat='mobile'){
+			}elseif($plat=='mobile'){
 				print '
 			    <tr>
 			    	<td>'.$row['Nama'].'</td>
@@ -57,7 +57,7 @@ function getUsers(string $plat) {
 					<td>'.$row["Email"].'</td>
 					<td>'.$row["NoHp"].'</td>
 				    <td>'.$row["level"].'</td>
-					<td>'.$row["Status"].'</td
+					<td>'.$row["Status"].'</td>
 				    <td><a href="../user-edit-mobile.php?id='.$row["id_userMobile"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a data-user-id="'.$row["id_userMobile"].'" class="btn btn-danger btn-xs delete-user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 			    </tr>
 		    ';

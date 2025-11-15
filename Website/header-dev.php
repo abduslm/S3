@@ -1,13 +1,10 @@
 <?php
-	//check login
-	include("includes/session.php");
-  
+//check login
+include("includes/session.php");
 include('includes/functions.php');
 ?>
 
-
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta charset="utf-8">
@@ -19,9 +16,6 @@ include('includes/functions.php');
   <!-- Font Awesome -->
   <link rel="stylesheet" href="css/fontawesome.min.css">
   <link rel="stylesheet" href="css/solid.min.css">
-
-  
-  
   
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -42,6 +36,9 @@ include('includes/functions.php');
 	
 	<!-- AdminLTE App -->
 	<script src="js/app.min.js"></script>
+
+	<!-- AJAX Navigation Script -->
+	<script src="js/nav.js"></script>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -103,48 +100,53 @@ include('includes/functions.php');
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">MENU</li>
-        <!-- Menu 0.1 -->
-        <li class="treeview">
-          <a href="dashboard.php"><i class="fa-solid fa-tachometer"></i> <span>Dashboard</span>
-            
-          </a>
-          
         
+        <!-- Menu Dashboard -->
+        <li class="active">
+          <a href="#" class="ajax-menu" data-page="dashboard">
+            <i class="fa-solid fa-tachometer"></i> 
+            <span>Dashboard</span>
+          </a>
         </li>
-        <!--  -->
+        
+        <!-- Admin Mobile -->
         <li class="treeview">
-          <a href="#"><i class="fa-solid fa-users"></i><span>Admin Mobile</span>
+          <a href="#">
+            <i class="fa-solid fa-users"></i>
+            <span>Admin Mobile</span>
             <span class="pull-right-container">
               <i class="fa-solid fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="user-add.php"><i class="fa-solid fa-plus"></i>Add User</a></li>
-            <li><a href="user-list.php"><i class="fa-solid fa-cog"></i>Manage Users</a></li>
+            <li><a href="#" class="ajax-menu" data-page="user-add-mobile"><i class="fa-solid fa-plus"></i>Add User</a></li>
+            <li><a href="#" class="ajax-menu" data-page="user-list-web"><i class="fa-solid fa-cog"></i>Manage Users</a></li>
           </ul>
         </li>
 
         <!-- Admin Web -->
         <li class="treeview">
-          <a href="#"><i class="fa-solid fa-users-gear"></i></i><span>Admin Web</span>
+          <a href="#">
+            <i class="fa-solid fa-users-gear"></i>
+            <span>Admin Web</span>
             <span class="pull-right-container">
               <i class="fa-solid fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="user-add.php"><i class="fa-solid fa-plus"></i>Add User</a></li>
-            <li><a href="user-list.php"><i class="fa-solid fa-cog"></i>Manage Users</a></li>
+            <li><a href="#" class="ajax-menu" data-page="user-add-web"><i class="fa-solid fa-plus"></i>Add User</a></li>
+            <li><a href="#" class="ajax-menu" data-page="user-list-web"><i class="fa-solid fa-cog"></i>Manage Users</a></li>
           </ul>
         </li>
 
         <!-- Riwayat Aktivitas -->
-        <li class="treeview">
-          <a href="dashboard.php"><i class="fa-solid fa-history"></i> <span>Riwayat Aktivitas</span>
-            
+        <li>
+          <a href="#" class="ajax-menu" data-page="activity-history">
+            <i class="fa-solid fa-history"></i> 
+            <span>Riwayat Aktivitas</span>
           </a>
         </li>
         
@@ -157,11 +159,22 @@ include('includes/functions.php');
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
   
-
     <!-- Main content -->
     <section class="content">
-    <?php  
-    include("user-list.php");
-    ?>
+      <div id="main-content">
+        <!-- Konten akan dimuat di sini via AJAX -->
+        <div class="text-center" style="padding: 50px;">
+          <i class="fa fa-spinner fa-spin fa-3x"></i>
+          <p>Loading...</p>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
+</div>
+<!-- ./wrapper -->
 
+</body>
+</html>

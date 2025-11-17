@@ -1,6 +1,6 @@
 <?php
 
-
+include('heade.php');
 $getID = $_GET['id'];
 
 // output any connection error

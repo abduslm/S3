@@ -19,7 +19,7 @@
 				<h4>Users</h4>
 			</div>
 			<div class="panel-body form-group form-group-sm">
-				<?php getUsers('website'); ?>
+				<?php getUsers('mobile'); ?>
 			</div>
 		</div>
 	</div>

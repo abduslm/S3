@@ -68,9 +68,9 @@ if($action == 'add_user') {
 	$user_password = $_POST['password'];
 	$user_level = $_POST['level'];
 	$platformm;
-	if($user_platform=$_POST['website']){
+	if($user_platform==$_POST['website']){
 		$platformm='user_web';
-	}elseif($user_platform=$_POST['mobile']){
+	}elseif($user_platform==$_POST['mobile']){
 		$platformm='user_mobile';
 	}
 	//insert query
@@ -116,9 +116,9 @@ if($action == 'update_user') {
 	$user_password = $_POST['password'];
 	$user_level = $_POST['level'];
 	$platformm;
-	if($user_platform=$_POST['website']){
+	if($user_platform==$_POST['website']){
 		$platformm='user_web';
-	}elseif($user_platform=$_POST['mobile']){
+	}elseif($user_platform==$_POST['mobile']){
 		$platformm='user_mobile';
 	}
 

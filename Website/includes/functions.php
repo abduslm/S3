@@ -13,9 +13,9 @@ function getUsers(string $plat) {
 	}
 
 	$query;
-	if($plat='website'){
+	if($plat=='website'){
 		$query = "SELECT `id_userWeb`,`Nama`, `Email`, `NoHp`, `username`, `level`, `Status` FROM `user_web` ";
-	}elseif($plat='mobile'){
+	}elseif($plat=='mobile'){
 		$query = "SELECT `id_userMobile`, `Nama`, `Email`, `NoHp`, `username`, `level`, `Status` FROM `user_mobile` ";
 	}
 	// mysqli select query
@@ -46,7 +46,7 @@ function getUsers(string $plat) {
 					<td>'.$row["NoHp"].'</td>
 				    <td>'.$row["level"].'</td>
 					<td>'.$row["Status"].'</td>
-				    <td><a href="../user-edit-web.php?id='.$row["id_userWeb"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a data-user-id="'.$row["id_userWeb"].'" class="btn btn-danger btn-xs delete-user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+				    <td><a href="#" class="ajax-menu" data-page="user-edit-web" idd="?id='.$row["id_userWeb"].'"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a data-user-id="'.$row["id_userWeb"].'" class="btn btn-danger btn-xs delete-user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 			    </tr>
 		    ';
 			}elseif($plat=='mobile'){
@@ -58,7 +58,7 @@ function getUsers(string $plat) {
 					<td>'.$row["NoHp"].'</td>
 				    <td>'.$row["level"].'</td>
 					<td>'.$row["Status"].'</td>
-				    <td><a href="../user-edit-mobile.php?id='.$row["id_userMobile"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a data-user-id="'.$row["id_userMobile"].'" class="btn btn-danger btn-xs delete-user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+				    <td><a href="#" class="ajax-menu" data-page="user-edit-web"></a><a href="user-edit-mobile.php?id='.$row["id_userMobile"].'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a data-user-id="'.$row["id_userMobile"].'" class="btn btn-danger btn-xs delete-user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 			    </tr>
 		    ';
 			}

@@ -123,7 +123,7 @@ include('includes/functions.php');
           </a>
           <ul class="treeview-menu">
             <li><a href="#" class="ajax-menu" data-page="user-add-mobile"><i class="fa-solid fa-plus"></i>Add User</a></li>
-            <li><a href="#" class="ajax-menu" data-page="user-list-web"><i class="fa-solid fa-cog"></i>Manage Users</a></li>
+            <li><a href="#" class="ajax-menu" data-page="user-list-mobile"><i class="fa-solid fa-cog"></i>Manage Users</a></li>
           </ul>
         </li>
 

@@ -5,14 +5,17 @@ include('functions.php');
 
 if(isset($_POST['page'])) {
     $page = $_POST['page'];
+    $idd = isset($_POST['idd']) ? $_POST['idd'] : '';
     
     // Validasi dan sanitize input
     $allowed_pages = array(
         'dashboard',
         'user-add-mobile', 
         'user-list-mobile',
+        'user-edit-mobile',
         'user-add-web',
         'user-list-web',
+        'user-edit-web',
         'activity-history'
     );
     
@@ -30,6 +33,12 @@ if(isset($_POST['page'])) {
                 break;
             case 'user-add-web':
                 include('../user-add-web.php');
+                break;
+            case 'user-edit-mobile':
+                include('../user-edit-mobile.php'.$idd);
+                break;
+            case 'user-edit-web':
+                include('../user-edit-web.php'.$idd.'');
                 break;
             case 'user-list-web':
                 include('../user-list-web.php');

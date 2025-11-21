@@ -28,8 +28,27 @@ include('includes/functions.php');
 			    		</div>
 			    		<div class="input-group form-group">
 			    			<div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-			    			<input class="form-control required" placeholder="Password" name="password" type="password" placeholder="Enter Password">
+			    			<input class="form-control required" placeholder="Password" name="password" id="passwordd" type="password" placeholder="Enter Password">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" id="togglePassword">
+								<i class="glyphicon glyphicon-eye-open"></i>
+								</button>
+							</span>
 			    		</div>
+<script>
+  const toggleBtn = document.getElementById("togglePassword");
+  const pwdInput = document.getElementById("passwordd");
+
+  toggleBtn.addEventListener("click", function () {
+    const type = pwdInput.getAttribute("type") === "password" ? "text" : "password";
+    pwdInput.setAttribute("type", type);
+
+    // Ganti ikon sesuai kondisi
+    this.innerHTML = type === "password" 
+      ? '<i class="glyphicon glyphicon-eye-open"></i>' 
+      : '<i class="glyphicon glyphicon-eye-close"></i>';
+  });
+</script>
 			    		<div class="checkbox">
 			    	    	<label>
 			    	    		<input name="remember" type="checkbox" value="Remember Me"> Remember Me
@@ -43,6 +62,8 @@ include('includes/functions.php');
 		</div>
 	</div>
 </div>
+
+
 
 <?php
 	include('includes/footer.php');

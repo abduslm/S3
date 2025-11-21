@@ -28,8 +28,8 @@ include('includes/functions.php');
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="js/moment.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
-	<script src="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+	<script src="js/jquery.dataTables.js"></script>
+	<script src="js/dataTables.bootstrap.js"></script>
 	<script src="js/bootstrap.datetime.js"></script>
 	<script src="js/bootstrap.password.js"></script>
 	<script src="js/scripts.js"></script>
@@ -43,8 +43,8 @@ include('includes/functions.php');
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap.datetimepicker.css">
-	<link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
-	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css">
+	<link rel="stylesheet" href="css/jquery.dataTables.css">
+	<link rel="stylesheet" href="css/dataTables.bootstrap.css">
 	<link rel="stylesheet" href="css/styles.css">
 
 </head>

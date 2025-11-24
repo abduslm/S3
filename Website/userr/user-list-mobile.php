@@ -1,9 +1,9 @@
 <?php
-
+include('includes/functions.php');
 
 ?>
 
-<h1>User List</h1>
+<h1>User Mobile List</h1>
 <hr>
 
 <div class="row">
@@ -16,7 +16,7 @@
 	
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4>Users</h4>
+				<h4>Users Mobile Lists</h4>
 			</div>
 			<div class="panel-body form-group form-group-sm">
 				<?php getUsers('mobile'); ?>
@@ -25,7 +25,7 @@
 	</div>
 </div>
 
-<div id="delete_user_mobile" class="modal fade">
+<div id="k_delete_user" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

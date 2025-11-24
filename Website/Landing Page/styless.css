@@ -1,0 +1,963 @@
+/* Reset & Global */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #101a24;
+  --secondary: #5c6574;
+  --accent: #E66925;
+  --light-bg: #f3f4f4;
+  --white: #ffffff;
+  --transition: all 0.3s ease;
+  --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 15px 30px rgba(0,0,0,0.2);
+  --border-radius-sm: 6px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--primary);
+  line-height: 1.6;
+  background: var(--white);
+  overflow-x: hidden;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px 10px 15px;
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.mobile-menu-btn {
+  display: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.text-wrapper {
+  font-family: "David Libre", serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+  padding: 5px 0;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.navbar a:hover {
+  color: var(--accent);
+}
+
+.login-btn {
+  background-color: var(--accent);
+  color: var(--white);
+  padding: 10px 25px;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(230, 105, 37, 0.3);
+  transition: var(--transition);
+  line-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.login-btn:hover {
+  background-color: #d55b1d;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 2rem 4% 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  top: -300px;
+  left: -300px;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 100px;
+  right: 100px;
+  background: url('source/img/leaf-illustration.png') no-repeat center/contain;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.hero-content {
+  flex: 1;
+  text-align: left;
+  min-width: 300px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-family: "David Libre", serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  max-width: 550px;
+}
+
+.menu-btn {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 2rem;
+  font-family: "David Libre", serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--transition);
+}
+
+.menu-btn:hover {
+  background: #1a2836;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.social-hero-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  color: var(--primary);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.icon-circle:hover {
+  background-color: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.hero-image-container {
+  flex: 1;
+  min-width: 400px;
+  height: 500px;
+  position: relative;
+  transform: translateX(5%);
+}
+
+.cafe-interior-img {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: rotate(3deg);
+  z-index: 1;
+}
+
+.floating-dish {
+  width: 300px;
+  position: absolute;
+  bottom: -30px;
+  left: -80px;
+  transform: rotate(-5deg);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-sm);
+  z-index: 2;
+}
+
+.signature-section {
+  padding: 1rem 2.5%;
+  text-align: center;
+  background-color: var(--white);
+}
+
+.section-title {
+  font-family: "David Libre", serif;
+  font-weight: 700;
+  font-size: clamp(5rem, 5.5vw, 3.5rem);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: var(--secondary);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  font-size: 1rem;
+}
+
+
+.parent {
+display: grid;
+
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+
+#d11 { grid-area: 1 / 1 / 2 / 2; }
+#d12 { grid-area: 1 / 2 / 2 / 3; }
+#d13 { grid-area: 1 / 3 / 2 / 4; }
+#d14 { grid-area: 1 / 4 / 2 / 5; }
+
+
+.food-cards {
+  display: grid;
+  /*grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));*/
+  grid-template-columns: repeat(4, 1fr);
+  /*grid-template-rows: auto 1fr auto;*/
+  /*grid-auto-rows: 1fr;*/
+  gap: 1rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  justify-items: center;
+  align-content: center;
+}
+
+.food-card {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.food-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.food-card img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  margin: 0 auto 1.2rem;
+  border-radius: var(--border-radius-md);
+}
+
+.food-card h3 {
+  font-family: "David Libre", serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.food-card p {
+  color: var(--secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+
+.price {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: var(--transition);
+}
+
+.testimonials {
+  padding: 5rem 5%;
+  background: var(--light-bg);
+  text-align: center;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 3rem auto 0;
+}
+
+.testimonial {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.testimonial:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stars {
+  color: #ffbb00;
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.stars i {
+  margin: 0 2px;
+}
+
+.customer {
+  margin-top: 1.2rem;
+  font-weight: 700;
+}
+
+.customer span {
+  font-weight: 400;
+  color: var(--secondary);
+  font-size: 0.95rem;
+}
+
+/* Styling untuk Footer Logo Container Baru */
+/* ====== Footer Styles ====== */
+.footer {
+    background: var(--primary);
+    color: var(--white); /* Teks dasar footer menjadi putih */
+    padding: 4rem 5% 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ilustrasi Latar Belakang Footer */
+.footer::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    bottom: -150px;
+    right: -100px;
+    background: url('source/img/bg-circle-pattern.png') no-repeat center/contain;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+/* Styling untuk Logo dan Kontak di Footer */
+.footer-contact-info {
+    order: 0;
+}
+
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.footer-logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.footer-title-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: "David Libre", serif;
+    margin: 0;
+    color: var(--white); /* Memastikan teks judul logo putih */
+}
+
+.contact-heading,
+.hours-heading,
+.follow-heading,
+.map-heading,
+.footer-col h4 {
+    color: var(--white); /* Memastikan semua heading putih */
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    opacity: 0.9;
+}
+
+.footer-contact-info p {
+    text-align: left;
+    margin-bottom: 0.2rem;
+    opacity: 1;
+    font-size: 0.95rem;
+    color: var(--white); /* Memastikan teks paragraf kontak putih */
+}
+
+.footer-col p {
+    margin-bottom: 0.6rem;
+    opacity: 0.9;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.footer-col p:hover {
+    opacity: 1;
+    padding-left: 5px;
+}
+
+/* Map Styling */
+.map-embed-container {
+    width: 100%;
+    max-width: 410px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 15px;
+}
+
+.map-embed-container iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Link Footer */
+.footer-col a,
+.footer-bottom a {
+    color: var(--white); /* Link menjadi putih */
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-col a:hover,
+.footer-bottom a:hover {
+    color: var(--accent); /* Hover menjadi oranye */
+}
+
+/* Ikon Sosial */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-icon:hover {
+    background: var(--white);
+    color: var(--primary); /* Ikon berubah warna menjadi biru dongker */
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* Penyesuaian mobile */
+@media (max-width: 768px) {
+    .footer-content {
+        text-align: center;
+    }
+    .footer-logo-container {
+        justify-content: center;
+    }
+    .footer-contact-info p {
+        text-align: center;
+    }
+}
+
+/* Penyesuaian mobile untuk kolom info kontak */
+@media (max-width: 768px) {
+    .footer-col {
+        text-align: center;
+    }
+    .footer-logo-container {
+        justify-content: center;
+    }
+    .footer-contact-info p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 1100px) {
+  .hero-image-container {
+    transform: translateX(0);
+  }
+  .cafe-interior-img {
+    width: 100%;
+    transform: none;
+    top: 10%;
+  }
+  .floating-dish {
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+  }
+  .food-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+#d11 { grid-area: 1 / 1 / 2 / 2; }
+#d12 { grid-area: 1 / 2 / 2 / 3; }
+#d13 { grid-area: 2 / 1 / 3 / 2; }
+#d14 { grid-area: 2 / 2 / 3 / 3; }
+
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 15px 20px;
+    position: relative;
+  }
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 1rem;
+    box-shadow: var(--shadow-sm);
+    display: none;
+    z-index: 100;
+  }
+  .navbar.active {
+    display: block;
+  }
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 20px;
+  }
+  .hero-content {
+    align-items: center;
+  }
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .social-hero-icons {
+    justify-content: center;
+  }
+  .hero-image-container {
+    min-width: 100%;
+    width: 100%;
+    height: 300px;
+    order: -1;
+    transform: none;
+    overflow: hidden;
+
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .cafe-interior-img {
+    width: 100%;
+    height: 100%;
+    position: static;
+    top: 0;
+    right: 0;
+    transform: none;
+    object-fit: cover;
+    box-shadow: none;
+  }
+  .floating-dish {
+    width: 180px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+    box-shadow: none;
+    position: absolute;
+  }
+  .food-cards {
+    padding: 0 20px;
+    grid-template-columns: 1fr;
+  }
+  #d11 { grid-area: 1 / 1 / 2 / 2; }
+#d12 { grid-area: 2 / 1 / 3 / 2; }
+#d13 { grid-area: 3 / 1 / 4 / 2; }
+#d14 { grid-area: 4 / 1 / 5 / 2; }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+  .hero-image-container {
+    height: 250px;
+  }
+  .floating-dish {
+    width: 150px;
+  }
+  .food-cards {
+    padding: 0 20px;
+    grid-template-columns: 1fr;
+  }
+#d11 { grid-area: 1 / 1 / 2 / 2; }
+#d12 { grid-area: 2 / 1 / 3 / 2; }
+#d13 { grid-area: 3 / 1 / 4 / 2; }
+#d14 { grid-area: 4 / 1 / 5 / 2; }
+}
+
+/* ========================================================== */
+/* ============ STYLE BARU UNTUK SECTION PENGGANTI ============ */
+/* ========================================================== */
+
+/* Ini akan menyembunyikan style .testimonials lama jika masih ada */
+.testimonials {
+  display: none;
+}
+
+/* ====== Welcome Section ====== */
+.welcome-section {
+padding: 5rem 5%;
+background-color: var(--light-bg);
+position: relative;
+overflow: hidden;
+}
+
+/* Ilustrasi latar belakang (SESUAIKAN PATH GAMBAR JIKA PERLU) */
+.welcome-section::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 5%;
+  left: 10%; /* Geser ke kiri atas */
+  background: url('source/img/bg-herbs.png') no-repeat center/contain;
+  opacity: 0.15;
+  transform: rotate(10deg);
+  z-index: 0;
+}
+.welcome-section::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  bottom: 5%;
+  right: 5%; /* Geser ke kanan bawah */
+  background: url('source/img/bg-garlic.png') no-repeat center/contain;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+  z-index: 0;
+}
+
+.welcome-container {
+  display: flex;
+  /* Ubah arah: Gambar Salad di Kiri, Teks di Kanan */
+ flex-direction: row; 
+align-items: center;
+gap: 3rem;
+max-width: 1200px;
+margin: 0 auto;
+position: relative;
+z-index: 1;
+}
+
+.welcome-image {
+flex: 1;
+position: relative;
+padding: 2rem; /* Ruang padding di sekitar gambar utama */
+}
+
+/* KUNCI: Membuat gambar salad miring dan besar */
+.main-salad-img {
+width: 100%;
+max-width: 500px;
+transform: rotate(-5deg); /* Miring ke kiri */
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+z-index: 3; /* Pastikan di atas daun */
+position: relative;
+}
+
+/* Posisi daun dekoratif */
+.deco-leaf {
+position: absolute;
+ z-index: 2;
+ width: 120px; 
+}
+
+.leaf-1 {
+ top: -50px;
+ left: -80px;
+ transform: rotate(-40deg);
+}
+
+.leaf-2 {
+ bottom: -60px;
+ right: -60px;
+ transform: rotate(20deg);
+}
+
+.welcome-content {
+ flex: 1;
+ padding-left: 20px;
+}
+
+.welcome-title {
+ font-family: "David Libre", serif;
+ font-weight: 700;
+ font-size: clamp(2.5rem, 5vw, 3.5rem);
+ line-height: 1.2;
+ margin-bottom: 1.5rem;
+ color: var(--primary);
+}
+
+.welcome-content p {
+   font-size: 1.1rem;
+ color: var(--secondary);
+max-width: 500px;
+}
+
+/* ====== Team Section ====== */
+.team-section {
+padding: 5rem 5%;
+ background-color: var(--white);
+ position: relative;
+ overflow: hidden;
+}
+
+/* Ilustrasi latar belakang Chef (GANTI NAMA FILE JIKA PERLU) */
+.team-section::before {
+ content: '';
+ position: absolute;
+ width: 250px;
+ height: 250px;
+ bottom: 30px; /* Posisikan ke kiri bawah */
+ left: 20px;
+ background: url('source/img/bg-garlic.png') no-repeat center/contain;
+ opacity: 0.1;
+ z-index: 0;
+ transform: rotate(-10deg);
+}
+
+.team-container {
+ display: flex;
+ /* Chef (gambar) di KANAN, Teks di KIRI */
+ flex-direction: row; 
+ align-items: center;
+ gap: 3rem;
+ max-width: 1200px;
+ margin: 0 auto;
+ position: relative;
+ z-index: 1;
+}
+
+.team-content {
+ flex: 1;
+order: 0; /* Teks di kiri */
+}
+
+.team-title {
+ font-family: "David Libre", serif;
+  font-weight: 700;
+font-size: clamp(2.5rem, 5vw, 3.5rem);
+ line-height: 1.2;
+margin-bottom: 1.5rem;
+ color: var(--primary);
+}
+
+.team-content p {
+ font-size: 1.1rem;
+ color: var(--secondary);
+ max-width: 500px;
+}
+
+.team-image {
+ flex: 1;
+ order: 1; /* Gambar di kanan */
+ position: relative;
+display: flex;
+ justify-content: flex-end; /* Dorong ke kanan */
+align-items: center;
+ padding: 2rem;
+}
+
+.team-image img {
+ max-width: 80%;
+ height: auto;
+ border-radius: 50%;
+ z-index: 2; 
+ object-fit: cover;
+}
+
+/* Lingkaran oranye di belakang chef */
+.team-image::after {
+content: '';
+ position: absolute;
+ width: 400px; 
+ height: 400px; 
+ background-color: var(--accent);
+ border-radius: 50%;
+ z-index: 1; 
+ top: 50%;
+ right: 0%; /* Geser ke kanan kontainer */
+ transform: translate(10%, -50%); /* Sesuaikan agar lingkaran di belakang chef */
+}
+
+/* ========================================================== */
+/* ============ STYLE RESPONSIVE UNTUK SECTION BARU ============ */
+/* ========================================================== */
+
+@media (max-width: 768px) {
+.welcome-container,
+.team-container {
+flex-direction: column;
+text-align: center;
+gap: 0.5rem;
+}
+ 
+.welcome-image,
+ .team-image {
+ order: -1; /* Gambar/Chef di atas teks pada versi mobile */
+ padding: 0;
+ justify-content: center;
+ }
+
+ .main-salad-img {
+ transform: none; 
+ box-shadow: none;
+ max-width: 100%; 
+ }
+    
+ .team-image::after {
+ width: 300px;
+ height: 300px;
+ right: 50%; 
+ transform: translate(50%, -50%); 
+}
+    
+.deco-leaf {
+display: none; /* Sembunyikan daun dekorasi di mobile */
+ }
+
+.welcome-content p,
+.team-content p {
+margin: 0 auto 1.5rem;
+max-width: 100%;
+}
+}
+

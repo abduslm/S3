@@ -1,168 +1,418 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+/* --- GLOBAL STYLES --- */
+* {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+html,
 body {
-  padding: 0;
-  background-color: #00a65a;
+    margin: 0px;
+    height: 100%;
 }
 
-.btn-primary {
-  background-color: #9966cc;
-  border-color: #9966cc;
+/* Generic focus style */
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #4a90e2 !important;
+    outline: -webkit-focus-ring-color auto 5px !important;
 }
 
-.btn-primary:hover {
-  background-color: #993399;
-  border-color: #993399;
+a {
+    text-decoration: none;
 }
 
-.btn-danger {
-  background-color: #f44336;
-  border-color: #f44336;
+/* --- MAIN LAYOUT (.login-SPV & .login) --- */
+
+.login-SPV {
+    overflow-x: hidden;
+    width: 100vw; /* MENGISI LEBAR BROWSER */
+    min-height: 100vh; /* MENGISI TINGGI BROWSER */
+    position: relative;
 }
 
-.btn-danger:hover {
-  background-color: #f72a1b;
-  border-color: #f72a1b;
+.login-SPV .login {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* MENGISI LEBAR BROWSER */
+    height: 100vh; /* MENGISI TINGGI BROWSER */
 }
 
-.btn-success {
-  background-color: #009966;
-  border-color: #009966;
+/* --- BACKGROUND AND OVERLAYS --- */
+
+.login-SPV .image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* MENGISI LEBAR BROWSER */
+    height: 100vh; /* MENGISI TINGGI BROWSER */
+    object-fit: cover; /* MEMASTIKAN GAMBAR MENUTUPI SEMUA AREA */
 }
 
-.panel-login {
-  background-color: #ffffff !important;
-  /*box-shadow: 5px 0px 77px #333;*/
+.login-SPV .rectangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* MENGISI LEBAR BROWSER */
+    height: 100vh; /* MENGISI TINGGI BROWSER */
+    border-radius: 40px;
+    /* Dark overlay */
+    background: linear-gradient(
+        90deg,
+        rgba(41, 52, 61, 0.27) 0%,
+        rgba(52, 64, 73, 0.27) 100%
+    );
 }
 
-.clear {
-  clear: both;
+.login-SPV .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* MENGISI LEBAR BROWSER */
+    height: 100vh; /* MENGISI TINGGI BROWSER */
 }
 
-.login-panel {
-  box-shadow: 5px 0px 77px #333;
-  margin-top: 150px;
+/* --- LOGIN CARD CONTAINER (DIPUSATKAN) --- */
+
+.login-SPV .rectangle-2 {
+    position: absolute;
+    top: 50%; /* BARU: Pindahkan ke tengah vertikal */
+    left: 50%; /* BARU: Pindahkan ke tengah horizontal */
+    transform: translate(-50%, -50%); /* BARU: Geser kembali setengah ukuran */
+    width: 610px;
+    height: 526px;
 }
 
-.panel-body {
-  padding: 30px 30px 15px 30px;
+/* --- LOGIN TITLE AND LOGO (POSISI DISESUAIKAN DENGAN PUSAT KARTU) --- */
+
+.login-SPV .logo-kedai-temeji {
+    /* Posisi logo disesuaikan secara manual agar tetap di atas kartu login */
+    position: absolute;
+    top: calc(45% - 263px - 86px); /* 50% - (tinggi kartu/2) - (tinggi logo/2) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 172px;
+    height: 172px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    z-index: 5;
 }
 
-.panel-heading {
-  padding: 15px 30px 15px 30px;
+.login-SPV .text-wrapper-3 {
+    /* Posisi judul disesuaikan secara manual agar tetap di dalam kartu login */
+    position: absolute;
+    top: calc(53% - 263px + 32px); /* 50% - (tinggi kartu/2) + sedikit offset */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 155px;
+    font-family: "Poppins-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 52px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    text-align: center;
 }
 
-.float-left {
-  float: left !important;
+/* --- FORM & INPUT STYLES (Posisi Label dan Input disesuaikan dengan posisi kartu) --- */
+
+.login-SPV .login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Dipusatkan ke tengah kartu */
+    width: 610px; /* Lebar Kartu Login */
+    height: 526px; /* Tinggi Kartu Login */
 }
 
-.float-right {
-  float: right !important;
+/* Username Label */
+.login-SPV .text-wrapper {
+    position: absolute;
+    top: 130px; /* Posisi relatif terhadap form */
+    left: 30px; /* Posisi relatif terhadap form */
+    width: 135px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 26px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
 }
 
-.margin-bottom {
-  margin-bottom: 1em;
+/* Password Label */
+.login-SPV .text-wrapper-2 {
+    position: absolute;
+    top: 250px; /* Posisi relatif terhadap form */
+    left: 30px; /* Posisi relatif terhadap form */
+    width: 135px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 26px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
 }
 
-.margin-top {
-  margin-top: 1em;
+/* Style umum untuk input field */
+.login-SPV .input-field {
+    position: relative; 
+    width: 100%; 
+    height: 56px;
+    background-color: #d9d9d9;
+    border-radius: 15px;
+    border: none;
+    padding: 0 20px;
+    font-size: 20px;
+    color: #333;
 }
 
-.padding-right {
-  padding-right: 15px;
+/* Penempatan Input Username */
+.login-SPV .username-field {
+    position: absolute;
+    top: 175px; /* Posisi relatif terhadap form */
+    left: 30px; 
+    width: 518px; 
 }
 
-.no-padding-right {
-  padding-right: 0;
+/* Style untuk placeholder */
+.login-SPV .input-field::placeholder {
+    color: #777;
+    opacity: 1; 
+    font-size: 20px;
 }
 
-.no-margin-bottom {
-  margin-bottom: 0;
+/* --- PASSWORD CONTAINER (untuk input dan icon) --- */
+.login-SPV .password-container {
+    position: absolute;
+    top: 290px; /* Posisi relatif terhadap form */
+    left: 30px; 
+    width: 518px;
+    height: 56px;
 }
 
-.user {
-
-  margin-right: 10px;
+/* Penyesuaian Input Password di dalam container */
+.login-SPV .password-field {
+    padding-right: 60px;
 }
 
-/* Forms */
-input.shipping {
-  text-align: right;
-}
-.custom_email_textarea {
-  width: 100%;
-  padding: 10px;
-}
-#invoice_status,
-#invoice_type {
-  margin-top: 23px;
-}
-
-.invoice_product_qty {
-  width: 50px;
-  text-align: center;
-}
-.invoice_type {
-  text-transform: uppercase;
-}
-
-.select-customer {
-  margin-top: 10px;
+/* Style untuk Tombol Hide/Show */
+.login-SPV .toggle-password {
+    position: absolute;
+    top: 38%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+    z-index: 2;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.delete-row {
-  float: left;
-  margin-top: 4px;
+/* --- SIGN IN BUTTON --- */
+
+.login-SPV .button-login{
+    position: absolute;
+    top: 400px; /* Posisi relatif terhadap form */
+    left: 30px; 
+    width: 520px;
+    height: 63px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
 }
 
-.item-select {
-  float: left;
-  margin: 4px;
+.login-SPV .rectangle-4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 518px;
+    height: 63px;
+    border-radius: 30px;
+    /* Gradien yang sama dengan desain */
+    background: linear-gradient(
+        90deg,
+        rgba(55, 58, 60, 1) 0%,
+        rgba(90, 94, 97, 1) 43%,
+        rgba(107, 112, 116, 1) 67%,
+        rgba(125, 130, 134, 1) 100%
+    );
 }
 
-.item-input {
-  float: left;
-  width: 65%;
-  margin-left: 10px;
+.login-SPV .text-wrapper-4 {
+    position: absolute;
+    top: 10px;
+    left: 201px;
+    width: 136px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #fefeff;
+    font-size: 34px;
+    letter-spacing: 0;
+    line-height: normal;
 }
 
-.textarea {
-  width: 100%;
+/* --- LOGOUT LINK (POSISI RELATIF TERHADAP BROWSER) --- */
+
+.login-SPV .logout-link {
+    position: absolute;
+    top: 21px;
+    right: 21px; /* Gunakan right: 21px agar tetap di pojok kanan atas */
+    left: auto; /* Pastikan left tidak bertabrakan */
+    width: 42px;
+    height: 42px;
+    display: block;
+    cursor: pointer;
+    z-index: 10;
 }
 
-.textarea textarea {
-  width: 100%;
-  padding: 10px;
-  resize: none;
+.login-SPV .logout {
+    /* Hapus posisi absolut dari elemen ini */
+    width: 42px;
+    height: 42px;
 }
 
-/* Other styles */
-strong.shipping {
-  margin-top: 4px;
-  display: block;
+/* =========================================================
+   ===============  RESPONSIVE ADJUSTMENTS  =============== 
+   ========================================================= */
+
+/* === TABLET (max-width: 992px) === */
+@media (max-width: 992px) {
+
+    .login-SPV .rectangle-2,
+    .login-SPV .login-form {
+        width: 80%;
+        
+    }
+
+    .login-SPV .logo-kedai-temeji {
+        top: calc(45% - 200px - 80px);
+        width: 150px;
+        height: 150px;
+    }
+
+    .login-SPV .text-wrapper-3 {
+        top: calc(53% - 220px + 20px);
+        font-size: 42px;
+    }
+
+    .login-SPV .text-wrapper,
+    .login-SPV .text-wrapper-2 {
+        font-size: 22px;
+    }
+
+    .login-SPV .username-field,
+    .login-SPV .password-container,
+    .login-SPV .button-login {
+        width: 90%;
+        left: 5%;
+    }
+
+    .login-SPV .rectangle-4 {
+        width: 100%;
+    }
+
+    .login-SPV .text-wrapper-4 {
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
-/* Progress bar */
-.progress .bar {
-  display: block;
-  height: 20px;
-}
-.error-list {
-  display: none;
-}
-.progress.progress-danger .bar {
-  background-color: #c13333;
-}
-.progress.progress-warning .bar {
-  background-color: #c1bf33;
-}
-.progress.progress-success .bar {
-  background-color: #33c133;
+
+/* === HANDPHONE (max-width: 768px) === */
+@media (max-width: 768px) {
+
+    .login-SPV .rectangle-2,
+    .login-SPV .login-form {
+        width: 90%;
+        position: absolute;
+        top: 50%; /* BARU: Pindahkan ke tengah vertikal */
+        left: 50%; /* BARU: Pindahkan ke tengah horizontal */
+        transform: translate(-50%, -50%);
+    }
+
+    .login-SPV .logo-kedai-temeji {
+        top: calc(40% - 160px - 60px);
+        width: 130px;
+        height: 130px;
+    }
+
+    .login-SPV .text-wrapper-3 {
+        top: calc(50% - 180px + 15px);
+        font-size: 34px;
+    }
+
+    .login-SPV .text-wrapper,
+    .login-SPV .text-wrapper-2 {
+        font-size: 18px;
+    }
+
+    .login-SPV .input-field {
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .login-SPV .button-login {
+        top: 380px; /* sedikit digeser biar muat */
+        height: 55px;
+    }
+
+    .login-SPV .rectangle-4 {
+        height: 55px;
+    }
+
+    .login-SPV .text-wrapper-4 {
+        font-size: 28px;
+        top: 8px;
+    }
 }
 
-.login-form {
-  margin-top: 100px;
-}
 
-.header-pad {
-  padding-top: 15px;
-  padding-bottom: 20px;
+/* === HP KECIL (max-width: 480px) === */
+@media (max-width: 480px) {
+
+    .login-SPV .logo-kedai-temeji {
+        width: 110px;
+        height: 110px;
+    }
+
+    .login-SPV .text-wrapper-3 {
+        font-size: 28px;
+    }
+
+    .login-SPV .text-wrapper,
+    .login-SPV .text-wrapper-2 {
+        font-size: 16px;
+    }
+
+    .login-SPV .input-field {
+        height: 46px;
+        font-size: 16px;
+        padding: 0 15px;
+    }
+
+    .login-SPV .button-login {
+        top: 370px;
+        height: 50px;
+    }
+
+    .login-SPV .rectangle-4 {
+        height: 50px;
+    }
+
+    .login-SPV .text-wrapper-4 {
+        font-size: 24px;
+    }
 }

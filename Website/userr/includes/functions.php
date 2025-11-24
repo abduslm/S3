@@ -5,13 +5,13 @@ include_once("config.php");
 // get user list
 function getUsers(string $plat) {
 
-	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
+	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME, DATABASE_PORT);
 
 	if ($mysqli->connect_error) {
 	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
 
-	$query;
+	$query='';
 	if($plat=='website'){
 		$query = "SELECT `id_userWeb`,`Nama`, `Email`, `NoHp`, `username`, `level`, `Status` FROM `user_web` ";
 	}elseif($plat=='mobile'){
@@ -79,13 +79,13 @@ function getUsers(string $plat) {
 
 
 function usernameCheck($username, $platform) {
-	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME);
+	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME, DATABASE_PORT);
 
 	if ($mysqli->connect_error) {
 	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
 
-	$query;
+	$query='';
 	if($platform=='website'){
 		$query = "SELECT `username` FROM `user_web` WHERE `username` = '$username' ";
 	}elseif($platform=='mobile'){

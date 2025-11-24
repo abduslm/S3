@@ -186,7 +186,7 @@ $(document).on('click', ".delete-user", function(e) {
 	                $("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
 	                $("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
 	                $("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
-	                $btn.button("reset");
+					$btn.button("reset");
 					
 					if(data.level === "Admin"){
 						window.location.href = "header-adm.php";

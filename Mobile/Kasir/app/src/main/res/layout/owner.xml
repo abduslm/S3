@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray">
+    android:background="#F1F1F1">
 
     <!-- HEADER -->
     <LinearLayout
@@ -19,111 +19,265 @@
             android:id="@+id/logo_kedai_"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/LogoKedaiTemeji"
             android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/LogoKedaiTemeji"/>
 
         <TextView
             android:id="@+id/kedai_temej"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
             android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
             android:text="Kedai Temeji"
             android:textAppearance="@style/kedaitemejiteks"/>
     </LinearLayout>
 
     <!-- GAMBAR BACKGROUND -->
-    <TextView
+    <View
         android:id="@+id/background"
         android:layout_width="170dp"
-        android:layout_height="160dp"
-        android:background="@drawable/menuowner1"
-        android:layout_marginTop="10dp"
+        android:layout_height="150dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintTop_toBottomOf="@id/sheet"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/menuowner1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sheet" />
+    <!-- MENU CONTAINER -->
+    <LinearLayout
+        android:id="@+id/menu_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sheet">
 
-    <!-- TABLE -->
+        <!-- DASHBOARD -->
+        <RelativeLayout
+            android:id="@+id/ownerdashboard"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/owner_dashboard">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/dashboard_owner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_centerVertical="true"
+                android:text="Dashboard"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"/>
+        </RelativeLayout>
+
+        <!-- LIHAT USER -->
+        <RelativeLayout
+            android:id="@+id/lihatuser"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/owner_dashboard">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/lihatuserowner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_centerVertical="true"
+                android:text="Lihat User"
+                android:textColor="#2F80DE"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"/>
+        </RelativeLayout>
+
+        <!-- LIHAT MENU -->
+        <RelativeLayout
+            android:id="@+id/Lihatmenu"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:background="@drawable/owner_dashboard">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/lihatmenuowner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_centerVertical="true"
+                android:text="Lihat Menu"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- FRAME TABEL -->
     <View
         android:id="@+id/table1"
         android:layout_width="520dp"
         android:layout_height="340dp"
-        android:background="@drawable/tabelowner"
-        android:layout_marginTop="60dp"
         android:layout_marginStart="190dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="60dp"
+        android:background="@drawable/tabelowner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- SCROLL BAR KANAN -->
     <RelativeLayout
         android:id="@+id/scroll"
         android:layout_width="12dp"
         android:layout_height="343dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/scroll"
         android:clipToOutline="true"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="5dp" />
-    <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- POSITION SLIDER SCROLL -->
     <RelativeLayout
         android:id="@+id/frame_8"
         android:layout_width="4dp"
         android:layout_height="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/scroll1"
         android:clipToOutline="true"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="70dp"
-        android:layout_marginStart="718dp" />
-    <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- SEARCH FILTER -->
     <RelativeLayout
         android:id="@+id/search_filt"
         android:layout_width="180dp"
         android:layout_height="40dp"
-        android:background="@drawable/searchowner"
-        android:clipToOutline="true"
         android:layout_marginStart="203dp"
         android:layout_marginTop="80dp"
+        android:background="@drawable/searchowner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="210dp"
+        android:layout_marginTop="87dp"
+    android:layout_centerVertical="true"
+    android:src="@drawable/iconsearch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="89dp"
+        android:text="Search"
+        android:textColor="#2E4258"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <!-- ROLE FILTER -->
     <RelativeLayout
         android:id="@+id/role_filter"
         android:layout_width="122dp"
         android:layout_height="40dp"
-        android:background="@drawable/roleowner"
-        android:clipToOutline="true"
         android:layout_marginStart="390dp"
         android:layout_marginTop="80dp"
+        android:background="@drawable/roleowner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="400dp"
+        android:layout_marginTop="87dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/iconroleowner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="430dp"
+        android:layout_marginTop="89dp"
+        android:text="Role"
+        android:textColor="#2E4258"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <!-- DATE FILTER -->
     <RelativeLayout
         android:id="@+id/date_filter"
         android:layout_width="123dp"
         android:layout_height="40dp"
-        android:background="@drawable/dateowner"
-        android:clipToOutline="true"
         android:layout_marginStart="520dp"
         android:layout_marginTop="80dp"
+        android:background="@drawable/dateowner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="528dp"
+        android:layout_marginTop="87dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/iconcalender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="559dp"
+        android:layout_marginTop="89dp"
+        android:text="Date"
+        android:textColor="#2E4258"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- TABLE -->
     <TableLayout
         android:id="@+id/user_table"
         android:layout_width="520dp"
-    android:layout_marginTop="130dp"
-    android:layout_height="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="190dp"
+        android:layout_marginTop="130dp"
         android:stretchColumns="0,1,2,3,4,5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <!-- HEADER -->
         <TableRow
-          android:background="#243447">
+            android:background="#243447">
 
             <TextView
                 android:text="Full Name"
@@ -174,9 +328,16 @@
                 android:layout_weight="0"/>
         </TableRow>
 
-
-
     </TableLayout>
-
-
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="100dp"
+        android:layout_height="49dp"
+        android:text="Kembali"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF4B4B"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

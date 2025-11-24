@@ -1,9 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
-</LinearLayout>
+    android:background="#F1F1F1">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logo_kedai_"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/LogoKedaiTemeji"/>
+
+        <TextView
+            android:id="@+id/kedai_temej"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:text="Kedai Temeji"
+            android:textAppearance="@style/kedaitemejiteks"/>
+    </LinearLayout>
+
+    <!-- GAMBAR BACKGROUND -->
+    <View
+        android:id="@+id/background"
+        android:layout_width="170dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/menuowner1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sheet" />
+    <!-- MENU CONTAINER -->
+    <LinearLayout
+        android:id="@+id/menu_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sheet">
+
+        <!-- DASHBOARD -->
+        <RelativeLayout
+            android:id="@+id/ownerdashboard"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/owner_dashboard">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/dashboard_owner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_centerVertical="true"
+                android:text="Dashboard"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"/>
+        </RelativeLayout>
+
+        <!-- LIHAT USER -->
+        <RelativeLayout
+            android:id="@+id/lihatuser"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/owner_dashboard">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/lihatuserowner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_centerVertical="true"
+                android:text="Lihat User"
+                android:textColor="#2F80DE"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"/>
+        </RelativeLayout>
+
+        <!-- LIHAT MENU -->
+        <RelativeLayout
+            android:id="@+id/Lihatmenu"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:background="@drawable/owner_dashboard">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/lihatmenuowner"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_centerVertical="true"
+                android:text="Lihat Menu"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- FRAME TABEL -->
+    <View
+        android:id="@+id/table1"
+        android:layout_width="520dp"
+        android:layout_height="340dp"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/tabelowner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- SCROLL BAR KANAN -->
+    <RelativeLayout
+        android:id="@+id/scroll"
+        android:layout_width="12dp"
+        android:layout_height="343dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/scroll"
+        android:clipToOutline="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- POSITION SLIDER SCROLL -->
+    <RelativeLayout
+        android:id="@+id/frame_8"
+        android:layout_width="4dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/scroll1"
+        android:clipToOutline="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
+    <!-- TABLE -->
+    <TableLayout
+        android:id="@+id/user_table"
+        android:layout_width="520dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="80dp"
+        android:stretchColumns="0,1,2,3,4,5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TableRow
+            android:background="#243447">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Product"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <TextView
+                android:text="Category Product"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:text="Status"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:text="Product ID"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+            <TextView
+                android:text="Quantity"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:text="Price"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="0"/>
+        </TableRow>
+
+    </TableLayout>
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="100dp"
+        android:layout_height="49dp"
+        android:text="Kembali"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF4B4B"
+        android:layout_marginStart="45dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -222,7 +222,7 @@ a {
 
 /* --- SIGN IN BUTTON --- */
 
-.login-SPV .button-login{
+.login-SPV .button-login {
     position: absolute;
     top: 400px; /* Posisi relatif terhadap form */
     left: 30px; 

@@ -29,7 +29,7 @@ include('includes/functions.php');
                     <div class="password-container">
                         <input type="password" id="password" name="password" class="input-field password-field" placeholder="Masukkan Password" required />
                         <button type="button" class="toggle-password" id="togglePassword" aria-label="Show password">
-                            👁️
+                            👁
                         </button>
                     </div>
 
@@ -58,7 +58,7 @@ include('includes/functions.php');
                     this.textContent = '🔒';
                     this.setAttribute('aria-label', 'Hide password');
                 } else {
-                    this.textContent = '👁️';
+                    this.textContent = '👁';
                     this.setAttribute('aria-label', 'Show password');
                 }
             });

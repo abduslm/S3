@@ -7,7 +7,7 @@ define('DATABASE_HOST', 'localhost'); //getenv('IP')
 define('DATABASE_NAME', 'pos');
 define('DATABASE_USER', 'root');
 define('DATABASE_PASS', '');
-define('DATABASE_PORT', '3307');
+define('DATABASE_PORT', '3306');
 
 // COMPANY INFORMATION
 define('COMPANY_LOGO', 'images/logo.png');
@@ -32,6 +32,6 @@ define('CURRENCY', 'Rp.'); // Currency symbol
 define('levell', 'admin');
 
 // CONNECT TO THE DATABASE
-$mysqli = new mysqli('localhost', 'root', '', 'pos', 3307);
+$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME, DATABASE_PORT);
 
 ?>

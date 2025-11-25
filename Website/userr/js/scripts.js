@@ -170,11 +170,11 @@ $(document).on('click', ".delete-user", function(e) {
 	    var errorCounter = validateForm();
 
 	    if (errorCounter > 0) {
-	        $("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
-	        $("#response .message").html("<strong>Error</strong>: Missing something are we? check and try again!");
-	        $("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
-			$btn.button("reset");
+		    $("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
+		    $("#response .message").html("<strong>Error</strong>: Tolong isi semua field yang diperlukan!");
+		    $("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 	    } else {
+			$(".required").parent().removeClass("has-error");
 	        var $btn = $("#btn-login").button("loading");
 
 	        jQuery.ajax({
@@ -184,22 +184,28 @@ $(document).on('click', ".delete-user", function(e) {
 	            dataType: 'json',
 	            success: function(data){
 	                $("#response .message").html("<strong>" + data.status + "</strong>: " + data.message);
-	                $("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
-	                $("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
-					$btn.button("reset");
-					
-					if(data.level === "Admin"){
+	                if (data.status === 'Success') {
+						$("#response").removeClass("alert-warning").addClass("alert-success").fadeIn();
+						if(data.level === "Admin"){
 						window.location.href = "header-adm.php";
-					} else if(data.level === "Developer"){
-						window.location.href = "header-dev.php";
-					}else{
-						window.location.href = "index.php";
+						} else if(data.level === "Developer"){
+							window.location.href = "header-dev.php";
+						}else{
+							window.location.href = "index.php";
+						}
+					} else {
+						$("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
 					}
 					
+					$("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
+					$btn.button("reset");
+					
+					
+					
 	            },
-	            error: function(xhr, status, error){
+	            error: function(data){
 					//$btn.button("reset");
-	                $("#response .message").html("<strong>Error</strong>: Terjadi kesalahan sistem. Silakan coba lagi.");
+	                $("#response .message").html("<strong>Error</strong>: Ada yang salah, silahkan coba lagi.");
 	                $("#response").removeClass("alert-success").addClass("alert-warning").fadeIn();
 	                $("html, body").animate({ scrollTop: $('#response').offset().top }, 1000);
 	                $btn.button("reset");

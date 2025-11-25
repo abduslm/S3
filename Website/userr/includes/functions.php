@@ -11,7 +11,7 @@ function getUsers(string $plat) {
 	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
 
-	$query='';
+	$query;
 	if($plat=='website'){
 		$query = "SELECT `id_userWeb`,`Nama`, `Email`, `NoHp`, `username`, `level`, `Status` FROM `user_web` ";
 	}elseif($plat=='mobile'){
@@ -85,7 +85,7 @@ function usernameCheck($username, $platform) {
 	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
 
-	$query='';
+	$query;
 	if($platform=='website'){
 		$query = "SELECT `username` FROM `user_web` WHERE `username` = '$username' ";
 	}elseif($platform=='mobile'){

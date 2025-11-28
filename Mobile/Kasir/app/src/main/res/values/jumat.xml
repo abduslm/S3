@@ -1,0 +1,6 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string
+        name="jum_at_19_s_text"
+        tools:ignore="HardcodedText">Jum\'at 19 September 2025 / Mahesa
+    </string>
+</resources>

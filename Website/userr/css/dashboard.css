@@ -1,0 +1,188 @@
+/* ========================================================= */
+/* Custom Styling untuk Dashboard Cards (Admin, Manager, Visitor) */
+/* ========================================================= */
+
+.role-card {
+    /* Menjadikan kartu terlihat kotak putih dengan bayangan */
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Sudut lebih melengkung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 150px; 
+    transition: transform 0.3s ease-in-out;
+    padding: 15px; 
+    margin-bottom: 20px; 
+}
+
+.role-card:hover {
+    transform: translateY(-5px); 
+}
+
+/* Bagian Header/Title Card */
+.role-card .role-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #444;
+    padding: 5px 0 10px 0;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+/* Icon (Perisai/Users) */
+.role-card .role-icon .fa-shield-alt,
+.role-card .role-icon .fa-users {
+    font-size: 24px;
+    margin-top: -3px; 
+}
+
+/* Bagian Konten/Detail */
+.role-card .role-content {
+    margin-top: 15px;
+}
+
+.role-card .role-count {
+    font-size: 20px; 
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.role-card .role-count-lg {
+    font-size: 30px; 
+    color: #000;
+}
+
+.role-card .role-desc {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* ---------------------------------------------------- */
+/* Style untuk Border Bawah Berdasarkan Warna Role & Visitor */
+/* ---------------------------------------------------- */
+
+/* ADMIN (Merah) */
+.role-card.role-red {
+    border-bottom: 5px solid #dd4b39; 
+}
+.role-card.role-red .role-icon .fa-shield-alt {
+    color: #dd4b39;
+}
+
+/* MANAGER (Biru) */
+.role-card.role-blue {
+    border-bottom: 5px solid #3c8dbc; 
+}
+.role-card.role-blue .role-icon .fa-shield-alt {
+    color: #3c8dbc;
+}
+
+/* VISITOR (Ungu) */
+.role-card.role-purple {
+    border-bottom: 5px solid #605ca8; 
+}
+.role-card.role-purple .role-icon .fa-users {
+    color: #605ca8;
+}
+
+/* ========================================================= */
+/* PERBAIKAN RESPONSIVITAS KHUSUS UNTUK 3 CARD (RATA KIRI-KANAN) */
+/* ========================================================= */
+
+/* Desktop Sangat Besar (Untuk memaksa 3 kolom (33.33%) menggunakan class col-lg-3) */
+@media (min-width: 1200px) {
+    /* Mengatur ulang col-lg-3 menjadi 1/3 lebar agar 3 card rata di desktop besar */
+    .row > .col-lg-3 {
+        width: 33.33333333%; 
+    }
+}
+
+/* Desktop Menengah (Layar 992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* Memastikan 3 card (col-lg-3) dibagi rata 33.33% */
+    .row > .col-lg-3 {
+        width: 33.33333333%; 
+    }
+    /* Jika Anda menggunakan col-md-6, ini akan memastikan 2 kolom di layar yang sedikit lebih kecil */
+    .row > .col-md-6 {
+        width: 50%;
+    }
+}
+
+
+/* ========================================================= */
+/* Custom Styling dan Responsif untuk Tabel Tracking Pengunjung */
+/* ========================================================= */
+
+/* Styling Box Kontainer Tabel */
+.box {
+    border-top: 3px solid #f4f4f4; 
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+.box-header.with-border {
+    padding: 15px; 
+}
+.box-body {
+    padding: 15px; /* Tambahkan padding di Box Body */
+}
+
+/* Styling umum untuk tabel */
+.table.user-list-table {
+    border-collapse: collapse !important; 
+    margin-bottom: 0 !important; /* DataTables footer tidak menempel */
+}
+
+.table.user-list-table > thead > tr > th {
+    /* Judul kolom lebih jelas dan rata tengah */
+    border-bottom: 2px solid #ddd;
+    font-weight: 700;
+    color: #444;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 15px 10px; 
+    background-color: #f8f8f8; 
+}
+
+.table.user-list-table > tbody > tr > td {
+    padding: 12px 10px;
+    vertical-align: middle;
+    border-top: 1px solid #f4f4f4;
+    font-size: 14px;
+}
+
+/* Hover effect pada baris tabel */
+.table.user-list-table > tbody > tr:hover {
+    background-color: #f3f3f3;
+}
+
+/* Styling Label/Badge Traffic Source */
+.table .label.custom-label {
+    padding: 5px 10px;
+    font-size: 13px; 
+    font-weight: 600;
+    border-radius: 15px; /* Membuat badge lebih bulat (pill shape) */
+    min-width: 90px; 
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+}
+
+/* Memastikan wrapper DataTables terlihat rapi */
+.dataTables_wrapper .row {
+    padding: 15px; 
+}
+.dataTables_wrapper .dataTables_paginate .pagination {
+    margin-top: 0;
+}
+
+/* Wrapper DataTables Responsive */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+.box .table-responsive {
+    border: none; /* Hapus border default AdminLTE pada tabel dalam box */
+    border-radius: 0;
+}

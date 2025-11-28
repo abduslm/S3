@@ -42,6 +42,7 @@ include('includes/functions.php');
 	<link rel="stylesheet" href="css/jquery.dataTables.css">
 	<link rel="stylesheet" href="css/dataTables.bootstrap.css">
 	<link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
 
@@ -171,6 +172,7 @@ include('includes/functions.php');
 
 </div>
 <!-- ./wrapper -->
+ 
 
 </body>
 </html>

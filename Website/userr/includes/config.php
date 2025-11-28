@@ -7,7 +7,7 @@ define('DATABASE_HOST', 'localhost'); //getenv('IP')
 define('DATABASE_NAME', 'pos');
 define('DATABASE_USER', 'root');
 define('DATABASE_PASS', '');
-define('DATABASE_PORT', '3306');
+define('DATABASE_PORT', '3307');
 
 // COMPANY INFORMATION
 define('COMPANY_LOGO', 'images/logo.png');

@@ -1,0 +1,1221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- header -->
+    <LinearLayout
+        android:id="@+id/header_bar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginStart="25dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:id="@+id/logo_kedai_temeji"
+                android:layout_width="48dp"
+                android:layout_height="58dp"
+                android:contentDescription="@string/KedaiTemeji"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logokedaitemeji" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:id="@+id/oneway"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kedai Temeji"
+                    android:fontFamily="@font/calibri_bold"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/oneway"
+                    android:gravity="start"
+                    />
+                <TextView
+                    android:id="@+id/jum_at_19_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jum’at 19-September-2025 / Mahesa"
+                    android:textAppearance="jumat"
+                    android:textSize="9sp"
+                    android:gravity="start" />
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/search_card"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+
+                android:layout_marginLeft="50dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="#FFFFFF">
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Search"
+                    android:textSize="14sp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:drawableStart="@drawable/cari"
+                    android:drawablePadding="8dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="text" />
+            </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:id="@+id/ordermenu4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/ordermenu"
+                    android:background="@drawable/ordermenu2"
+                    android:elevation="8dp"
+                    android:scaleType="fitCenter"
+                    android:padding="3dp"
+                    />
+                <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+                <TextView
+                    android:id="@+id/ordermenu5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order Menu"
+                    android:textAppearance="@style/ordermenu"
+                    android:lineSpacingExtra="7sp"
+                    android:translationY="-3.34sp"
+                    android:gravity="top"
+                    android:elevation="8dp"
+                    android:fontFamily="@font/manrope_bold"
+                    />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+                <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+                <TextView
+                    android:id="@+id/daftar_pesanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar Pesanan"
+                    android:textAppearance="@style/daftarpesanan"
+                    android:gravity="center"
+                    android:layout_marginLeft="70dp"
+                    android:background="@drawable/daftarpesanan"
+                    android:drawableStart="@drawable/edit"
+                    />
+                <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+        </LinearLayout>
+        <View
+            android:id="@+id/header_divider"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="#EEEEEE" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="430dp"
+                android:layout_height="50dp"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/pesanan1">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/waktuu1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableBottom="@drawable/pesanan10"
+                            android:text="23.10"
+                            android:textAppearance="inter"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/waktuu2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="23.10"
+                        android:textAppearance="inter"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/pesanan2"
+                    android:layout_width="430dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/pesanan1"
+                    />
+                <View
+                    android:id="@+id/pesanan3"
+                    android:layout_width="430dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/pesanan1"
+                    />
+                <View
+                    android:id="@+id/pesanan4"
+                    android:layout_width="430dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/pesanan1"
+                    />
+
+
+                <TextView
+                    android:id="@+id/pesanandua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pesanan 2 - Mahesa"
+                    android:textAppearance="manrope_bold"
+                    android:textSize="12sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="86dp"
+                    android:textColor="#0C085C"
+                    android:gravity="start" />
+                <TextView
+                    android:id="@+id/keteranganpesanan2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pop Ice Taro 1 + Pop Ice Strawberry 1 + Kentang Goreng"
+                    android:textAppearance="inter"
+                    android:textSize="8sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="106dp"
+                    android:textColor="#0C085C"
+                    android:gravity="start" />
+                <TextView
+                    android:id="@+id/waktu2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23.00"
+                    android:textAppearance="inter"
+                    android:textSize="8sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="22dp"
+                    android:gravity="start" />
+                <ImageView
+                    android:id="@+id/logopesanan1"
+                    android:layout_width="15dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/KedaiTemeji"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pesanan10"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="38dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="32dp"/>
+                <TextView
+                    android:id="@+id/pesanansatu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pesanan 1-Mahesa"
+                    android:textAppearance="manrope_bold"
+                    android:textSize="12sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="24dp"
+                    android:textColor="#0C085C"
+                    android:gravity="start" />
+                <TextView
+                    android:id="@+id/keteranganpesanan1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indomie Rendang 1 + Indomie Goreng 1 + Es Teh 2"
+                    android:textAppearance="inter"
+                    android:textSize="8sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="44dp"
+                    android:textColor="#0C085C"
+                    android:gravity="start" />
+                <TextView
+                    android:id="@+id/waktu3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23.59"
+                    android:textAppearance="inter"
+                    android:textSize="8sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="143dp"
+                    android:gravity="start" />
+                <ImageView
+                    android:id="@+id/logopesanan3"
+                    android:layout_width="15dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/KedaiTemeji"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pesanan10"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="38dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="152dp"/>
+                <TextView
+                    android:id="@+id/pesanantiga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pesanan 3 - Mahesa"
+                    android:textAppearance="manrope_bold"
+                    android:textSize="12sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="146dp"
+                    android:textColor="#0C085C"
+                    android:gravity="start" />
+                <TextView
+                    android:id="@+id/keteranganpesanan3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pop Ice Taro 1 + Pop Ice Strawberry 1 + Kentang Goreng"
+                    android:textAppearance="inter"
+                    android:textSize="8sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="166dp"
+                    android:textColor="#0C085C"
+                    android:gravity="start" />
+
+                <TextView
+                    android:id="@+id/waktu1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="22dp"
+                    android:gravity="start"
+                    android:text="23.00"
+                    android:textAppearance="inter"
+                    android:textSize="8sp" />
+                <ImageView
+                    android:id="@+id/logopesanan1"
+                    android:layout_width="15dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/KedaiTemeji"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pesanan10"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="38dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="32dp"/>
+                <TextView
+                    android:id="@+id/pesanansatu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pesanan 1-Mahesa"
+                    android:textAppearance="manrope_bold"
+                    android:textSize="12sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="24dp"
+                    android:textColor="#0C085C"
+                    android:gravity="start" />
+                <TextView
+                    android:id="@+id/keteranganpesanan1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Indomie Rendang 1 + Indomie Goreng 1 + Es Teh 2"
+                    android:textAppearance="inter"
+                    android:textSize="8sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="62dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="44dp"
+                    android:textColor="#0C085C"
+                    android:gravity="start" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="40"
+                android:orientation="vertical">
+            </LinearLayout>
+
+    </LinearLayout>
+    <!--============== Auto layout, grids, variables, and unit scale are not yet supported -->
+
+
+    <RelativeLayout
+        android:id="@+id/content_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F5F5F5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_divider"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#AAAAAA"
+            android:textSize="20sp" />
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/frame_11"
+            android:layout_width="470dp"
+            android:layout_height="290dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:clipToOutline="true"
+            android:background="@drawable/bgkasir2"
+            />
+
+
+
+
+        <!-- drawable/frame_11.xml -->
+
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+
+        <!-- drawable/rectangle_8.xml -->
+
+        <View
+            android:id="@+id/indomierendang1"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="504dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/indomie"
+            />
+
+        <View
+            android:id="@+id/indomierendang2"
+            android:layout_width="12dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="504dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/indomie3"
+            android:elevation="4dp"
+            />
+        <ImageView
+            android:id="@+id/indomierendang3"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="182dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/indomierendang"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        <TextView
+            android:id="@+id/mierendang4"
+            android:layout_width="110dp"
+            android:layout_height="26dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="550dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:text="Indomie Rendang"
+            android:textAppearance="@style/indomierendang"
+            android:lineSpacingExtra="12sp"
+            android:translationY="-6.07sp"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="4dp"
+            />
+        <TextView
+            android:id="@+id/haragindomierendang6"
+            android:layout_width="80dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="552dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="26dp"
+            android:text="Rp. 10.000"
+            android:textAppearance="@style/mierendang"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+
+        <ImageView
+            android:id="@+id/mierendang7"
+            android:layout_width="9dp"
+            android:layout_height="9dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="552dp"
+            android:layout_marginTop="38dp"
+            android:clipToOutline="true"
+            android:src="@drawable/editabu"
+            />
+        <TextView
+            android:id="@+id/haragindomierendang8"
+            android:layout_width="100dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="563dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="36dp"
+            android:text="Jangan terlalu pedas"
+            android:textAppearance="@style/ketmierendang"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+        <View
+            android:id="@+id/indomierendang9"
+            android:layout_width="12dp"
+            android:layout_height="14dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="640dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/indomie4"
+            android:elevation="4dp"
+            />
+        <View
+            android:id="@+id/indomierendang10"
+            android:layout_width="12dp"
+            android:layout_height="14dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="668dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/indomie5"
+            android:elevation="4dp"
+            />
+        <ImageView
+            android:id="@+id/indomierendang11"
+            android:layout_width="8dp"
+            android:layout_height="55dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="81dp"
+            android:layout_marginTop="5.5dp"
+            android:src="@drawable/gariskecil"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <ImageView
+            android:id="@+id/indomierendang12"
+            android:layout_width="8dp"
+            android:layout_height="55dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="53dp"
+            android:layout_marginTop="5.5dp"
+            android:src="@drawable/garistambah"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+
+
+        <View
+            android:id="@+id/indomiegoreng1"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="504dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/indomie"
+            />
+        <View
+            android:id="@+id/indomiegoreng2"
+            android:layout_width="12dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="504dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/indomie3"
+            android:elevation="4dp"
+            />
+        <ImageView
+            android:id="@+id/indomiegoreng3"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="182dp"
+            android:layout_marginTop="55dp"
+            android:src="@drawable/indomiegoreng"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <TextView
+            android:id="@+id/miegoreng4"
+            android:layout_width="110dp"
+            android:layout_height="26dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="550dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="66dp"
+            android:text="Indomie Goreng"
+            android:textAppearance="@style/indomierendang"
+            android:lineSpacingExtra="12sp"
+            android:translationY="-6.07sp"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="4dp"
+            />
+        <TextView
+            android:id="@+id/haragindomiegoreng5"
+            android:layout_width="80dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="552dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="72dp"
+            android:text="Rp. 10.000"
+            android:textAppearance="@style/mierendang"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+        <ImageView
+            android:id="@+id/miegoreng6"
+            android:layout_width="9dp"
+            android:layout_height="9dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="552dp"
+            android:layout_marginTop="85dp"
+            android:clipToOutline="true"
+            android:src="@drawable/editabu"
+            />
+        <TextView
+            android:id="@+id/haragindomiegoreng7"
+            android:layout_width="100dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="563dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="83dp"
+            android:text="Catatan"
+            android:textAppearance="@style/ketmierendang"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+        <View
+            android:id="@+id/indomiegoreng8"
+            android:layout_width="12dp"
+            android:layout_height="14dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="640dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="73dp"
+            android:background="@drawable/indomie4"
+            android:elevation="4dp"
+            />
+        <View
+            android:id="@+id/indomiegoreng9"
+            android:layout_width="12dp"
+            android:layout_height="14dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="668dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="73dp"
+            android:background="@drawable/indomie5"
+            android:elevation="4dp"
+            android:src="@drawable/garistambah"
+            />
+        <ImageView
+
+            android:layout_width="8dp"
+            android:layout_height="55dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="81dp"
+            android:layout_marginTop="52dp"
+            android:src="@drawable/gariskecil"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <ImageView
+
+            android:layout_width="8dp"
+            android:layout_height="55dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="53dp"
+            android:layout_marginTop="52dp"
+            android:src="@drawable/garistambah"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+
+
+        <View
+            android:id="@+id/esteh1"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="504dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="106dp"
+            android:background="@drawable/indomie"
+            />
+        <View
+            android:id="@+id/esteh2"
+            android:layout_width="12dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="504dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="106dp"
+            android:background="@drawable/indomie3"
+            android:elevation="4dp"
+            />
+        <ImageView
+            android:id="@+id/esteh3"
+            android:layout_width="30dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="182dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/esteh"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <TextView
+            android:id="@+id/esteh4"
+            android:layout_width="110dp"
+            android:layout_height="26dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="550dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="114dp"
+            android:text="Es Teh"
+            android:textAppearance="@style/indomierendang"
+            android:lineSpacingExtra="12sp"
+            android:translationY="-6.07sp"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="4dp"
+            />
+        <TextView
+            android:id="@+id/esteh5"
+            android:layout_width="80dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="552dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="119dp"
+            android:text="Rp. 10.000"
+            android:textAppearance="@style/mierendang"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+        <ImageView
+            android:id="@+id/esteh6"
+            android:layout_width="9dp"
+            android:layout_height="9dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="552dp"
+            android:layout_marginTop="131dp"
+            android:clipToOutline="true"
+            android:src="@drawable/editabu"
+            />
+        <TextView
+            android:id="@+id/esteh7"
+            android:layout_width="100dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="563dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="129dp"
+            android:text="Jangan banyak gula"
+            android:textAppearance="@style/ketmierendang"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+        <View
+            android:id="@+id/esteh8"
+            android:layout_width="12dp"
+            android:layout_height="14dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="640dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="118dp"
+            android:background="@drawable/indomie4"
+            android:elevation="4dp"
+            />
+        <View
+            android:id="@+id/esteh9"
+            android:layout_width="12dp"
+            android:layout_height="14dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="668dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="118dp"
+            android:background="@drawable/indomie5"
+            android:elevation="4dp"
+            />
+        <ImageView
+
+            android:layout_width="8dp"
+            android:layout_height="55dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="81dp"
+            android:layout_marginTop="98dp"
+            android:src="@drawable/gariskecil"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <ImageView
+
+            android:layout_width="8dp"
+            android:layout_height="55dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="52dp"
+            android:layout_marginTop="98dp"
+            android:src="@drawable/garistambah"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        <TextView
+            android:id="@+id/jumlah1"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="657dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="24dp"
+            android:text="1"
+            android:textAppearance="@style/jumlah"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/jumlah2"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="657dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="72dp"
+            android:text="1"
+            android:textAppearance="@style/jumlah"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/jumlah3"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="657dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="117dp"
+            android:text="2"
+            android:textAppearance="@style/jumlah"
+            android:gravity="top"
+            android:fontFamily="@font/calibri_regular"
+            android:elevation="8dp"
+            />
+
+
+        <ImageView
+            android:id="@+id/tempatsampah1"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="98dp"
+            android:src="@drawable/tempatsampahhh"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <ImageView
+            android:id="@+id/tempatsampah2"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="54dp"
+            android:src="@drawable/tempatsampahhh"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <ImageView
+            android:id="@+id/tempatsampah3"
+            android:layout_width="20dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="9dp"
+            android:src="@drawable/tempatsampahhh"
+            android:elevation="8dp"
+            android:scaleType="fitCenter"
+            />
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        <View
+            android:id="@+id/line_2"
+            android:layout_width="205dp"
+            android:layout_height="3dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="510dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="154dp"
+            android:background="@drawable/garis"
+            />
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="512dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="160dp"
+            android:text="Total"
+            android:textAppearance="@style/total"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/total1"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="650dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="160dp"
+            android:text="Rp. 26.000"
+            android:textAppearance="@style/total"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/uang"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="512dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="178dp"
+            android:text="Uang"
+            android:textAppearance="@style/total"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/uang1"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="650dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="178dp"
+            android:text="Rp. 30.000"
+            android:textAppearance="@style/total"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/kembalian"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="512dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="198dp"
+            android:text="Kembalian"
+            android:textAppearance="@style/total"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/kembalian1"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="650dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="198dp"
+            android:text="Rp. 4.000"
+            android:textAppearance="@style/total"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/metode1"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="512dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="218dp"
+            android:text="Metode"
+            android:textAppearance="@style/total"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/metode2"
+            android:layout_width="106dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="610dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="218dp"
+            android:clipToOutline="true"
+            android:background="@drawable/metode"
+            />
+        <View
+            android:id="@+id/metode3"
+            android:layout_width="53dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="610dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="218dp"
+            android:background="@drawable/metode5"
+            android:elevation="4dp"
+            />
+        <TextView
+            android:id="@+id/metode4"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="618dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="222dp"
+            android:text="Cash"
+            android:textAppearance="@style/cash"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/metode5"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="668dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="222dp"
+            android:text="QRIS"
+            android:textAppearance="@style/cash"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <View
+            android:id="@+id/hasilakhir"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="536dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="270dp"
+            android:background="@drawable/hasilakhir"
+            android:elevation="4dp"
+            />
+        <TextView
+            android:id="@+id/item1"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="545dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="272dp"
+            android:text="4 items"
+            android:textAppearance="@style/item"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/item2"
+            android:layout_width="90dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="545dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="288dp"
+            android:text="Rp.26.000"
+            android:textAppearance="@style/item2"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+        <TextView
+            android:id="@+id/hasilakhir2"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="642dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="280dp"
+            android:background="@drawable/hasilakhir2"
+            android:elevation="4dp"
+            />
+        <TextView
+            android:id="@+id/item3"
+            android:layout_width="90dp"
+            android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="654dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="284dp"
+            android:text="Order"
+            android:textAppearance="@style/item2"
+            android:gravity="top"
+            android:fontFamily="@font/manrope_bold"
+            android:elevation="8dp"
+            />
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+
+        <!-- drawable/frame_9.xml -->
+
+
+
+        <!-- drawable/line_2.xml -->
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+        <!-- drawable/trash_3.xml -->
+
+
+        <!-- drawable/rectangle_7.xml -->
+
+
+        <View
+            android:id="@+id/rectangle_1"
+            android:layout_width="230dp"
+            android:layout_height="707dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="499dp"
+            android:layout_marginBottom="0dp"
+            android:background="#E6FFFFFF" />
+
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+
+
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+        <TextView
+            android:id="@+id/background"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="280dp"
+            android:background="@drawable/background_kasir1"
+            android:gravity="center"
+            android:paddingTop="1.6dp"
+            android:text="Kembali" />
+        <!-- Auto layout, grids, variables, and unit scale are not yet supported -->
+
+
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

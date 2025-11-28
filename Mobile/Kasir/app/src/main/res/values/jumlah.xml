@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>   <style name="jumlah">
+    <item name="android:textSize">12sp</item>
+    <item name="android:letterSpacing">0.03</item>
+    <item name="android:textColor">#746565</item>
+</style>
+
+    <!-- strings.xml -->
+    <string name="jumlah">
+            1
+        </string></resources>

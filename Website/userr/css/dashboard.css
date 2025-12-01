@@ -90,23 +90,31 @@
 /* PERBAIKAN RESPONSIVITAS KHUSUS UNTUK 3 CARD (RATA KIRI-KANAN) */
 /* ========================================================= */
 
-/* Desktop Sangat Besar (Untuk memaksa 3 kolom (33.33%) menggunakan class col-lg-3) */
+/* Desktop Sangat Besar (Fix 3 kolom rata) */
 @media (min-width: 1200px) {
-    /* Mengatur ulang col-lg-3 menjadi 1/3 lebar agar 3 card rata di desktop besar */
     .row > .col-lg-3 {
         width: 33.33333333%; 
     }
 }
 
-/* Desktop Menengah (Layar 992px - 1199px) */
+/* Desktop Menengah (Fix 3 kolom rata) */
 @media (min-width: 992px) and (max-width: 1199px) {
-    /* Memastikan 3 card (col-lg-3) dibagi rata 33.33% */
     .row > .col-lg-3 {
         width: 33.33333333%; 
     }
-    /* Jika Anda menggunakan col-md-6, ini akan memastikan 2 kolom di layar yang sedikit lebih kecil */
     .row > .col-md-6 {
+        width: 50%; /* Pertahankan 2 kolom di breakpoint col-md-6 */
+    }
+}
+
+/* FIX TABLET 820PX (Card Pengunjung mengambil 100% lebar) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .row > .col-md-6:nth-child(1), 
+    .row > .col-md-6:nth-child(2) {
         width: 50%;
+    }
+    .row > .col-md-6:nth-child(3) {
+        width: 100%;
     }
 }
 
@@ -131,11 +139,10 @@
 /* Styling umum untuk tabel */
 .table.user-list-table {
     border-collapse: collapse !important; 
-    margin-bottom: 0 !important; /* DataTables footer tidak menempel */
+    margin-bottom: 0 !important; 
 }
 
 .table.user-list-table > thead > tr > th {
-    /* Judul kolom lebih jelas dan rata tengah */
     border-bottom: 2px solid #ddd;
     font-weight: 700;
     color: #444;
@@ -162,7 +169,7 @@
     padding: 5px 10px;
     font-size: 13px; 
     font-weight: 600;
-    border-radius: 15px; /* Membuat badge lebih bulat (pill shape) */
+    border-radius: 15px; 
     min-width: 90px; 
     display: inline-block;
     text-align: center;
@@ -183,6 +190,6 @@
     width: 100%;
 }
 .box .table-responsive {
-    border: none; /* Hapus border default AdminLTE pada tabel dalam box */
+    border: none; 
     border-radius: 0;
 }

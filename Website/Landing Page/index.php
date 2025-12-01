@@ -15,7 +15,7 @@ Kedai Temeji menghadirkan pengalaman kuliner terbaik dengan cita rasa khas dan s
         
       </div>
       <div class="hero-image-container">
-                <img src="source/img/pexels-volkan-vardar-3887985 1.png" alt="Cafe Interior" class="cafe-interior-img" />
+                <img src="source/img/Home-Pict.jpeg" alt="Cafe Interior" class="cafe-interior-img" />
       </div>
     </section>
 
@@ -58,7 +58,7 @@ Kedai Temeji menghadirkan pengalaman kuliner terbaik dengan cita rasa khas dan s
     <div class="welcome-container">
         <div class="welcome-image">
             
-            <img src="source/img/dish-2_2.png" alt="Salad Khas Kedai Temeji" class="main-salad-img">
+            <img src="source/img/Welcome-To-Our.jpeg" alt="Salad Khas Kedai Temeji" class="main-salad-img">
         </div>
         <div class="welcome-content">
             <h2 class="welcome-title">Welcome to Our Cafe</h2>
@@ -81,7 +81,7 @@ Setiap sajian di Kedai Temeji dibuat dengan penuh kreativitas dan ketulusan oleh
         </div>
         <div class="team-image">
             
-            <img src="source/img/chef_1.png" alt="Chef Kedai Temeji">
+            <img src="source/img/Crafted-By.jpeg" alt="Chef Kedai Temeji">
         
         </div>
         <div class="deco-illustration deco-garlic-bottom"></div>

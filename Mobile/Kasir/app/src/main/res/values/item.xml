@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><!-- styles.xml -->
+    <style name="item">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">#B59371</item>
+    </style>
+
+    <!-- strings.xml -->
+    <string name="item">
+ 4 Items
+</string></resources>

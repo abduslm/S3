@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <style name="hargaindomierendang">
+    <item name="android:textSize">13sp</item>
+    <item name="android:textColor">#B3000000</item>
+</style>
+
+    <!-- strings.xml -->
+    <string name="hargaindomierendang">
+            Rp. 10.000
+        </string>
+</resources>

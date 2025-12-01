@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- drawable/tabel_produ.xml -->
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="905.6dp"
+    android:height="640dp"
+    android:viewportWidth="905.6"
+    android:viewportHeight="640"
+    >
+    <group>
+        <clip-path
+            android:pathData="M10 0H895.602C901.125 0 905.602 4.47715 905.602 10V630C905.602 635.523 901.125 640 895.602 640H10C4.47715 640 0 635.523 0 630V10C0 4.47715 4.47715 0 10 0Z"
+            />
+        <path
+            android:pathData="M0 0V640H905.602V0"
+            android:fillColor="#FFFFFF"
+            />
+        <path
+            android:pathData="M10 0H895.602C901.125 0 905.602 4.47715 905.602 10V630C905.602 635.523 901.125 640 895.602 640H10C4.47715 640 0 635.523 0 630V10C0 4.47715 4.47715 0 10 0Z"
+            android:strokeWidth="4"
+            android:strokeColor="#D9D9D9"
+            />
+    </group>
+</vector>

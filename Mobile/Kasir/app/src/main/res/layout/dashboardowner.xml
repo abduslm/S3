@@ -22,7 +22,7 @@
         <ImageView
             android:layout_width="64dp"
             android:layout_height="72dp"
-            android:src="@drawable/LogoKedaiTemeji"
+            android:src="@drawable/logokedaitemeji"
             android:layout_marginEnd="12dp"/>
 
         <TextView

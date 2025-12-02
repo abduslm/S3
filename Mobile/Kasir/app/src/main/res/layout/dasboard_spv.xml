@@ -4,25 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F1F1F1">
 
     <!-- HEADER -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:background="#E0E0E0"
+        android:layout_height="80dp"
+        android:background="#FFFFFF"
         android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/LogoKedaiTemeji"
+    <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/logokedaitemeji"
             android:layout_marginEnd="8dp"/>
 
         <TextView
@@ -37,11 +37,11 @@
     <!-- SIDEBAR -->
     <LinearLayout
         android:id="@+id/sidebar"
-        android:layout_width="200dp"
+        android:layout_width="280dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:background="#F1F1F1"
-        android:padding="16dp"
+        android:padding="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/menuspv"
-            android:padding="8dp">
+            android:padding="12dp">
 
             <!-- Menu 1: Dashboard -->
             <LinearLayout
@@ -138,126 +138,125 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN CONTENT (Tablet Scaling) -->
     <LinearLayout
         android:id="@+id/main_content"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="680dp"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="24dp"
+        android:background="#FFFFFF"
         app:layout_constraintStart_toEndOf="@id/sidebar"
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Overload dan Tanggal -->
+        <!-- Title -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="12dp">
+            android:gravity="center_vertical"
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="49dp"
+                android:layout_height="wrap_content"
                 android:text="Overload"
-                android:textSize="20sp"
+                android:textSize="26sp"
                 android:textStyle="bold"
                 android:textColor="#333333"/>
 
-            <!-- Overload dan Tanggal -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
-
+                android:gravity="end|center_vertical">
 
                 <LinearLayout
                     android:id="@+id/date_picker_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:padding="8dp"
                     android:orientation="horizontal"
-                    android:gravity="end|center_vertical"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:padding="4dp">
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:id="@+id/tv_selected_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="30 Oktober 2025"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textColor="#333333"
-                        android:layout_marginEnd="4dp" />
+                        android:layout_marginEnd="6dp"/>
 
-                    <!-- Panah bawah -->
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="16dp"
-                        android:contentDescription="Pilih Tanggal"
-                        android:src="@drawable/Vector"
-                        android:tint="#333333" />
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/vector"
+                        android:tint="#333333"/>
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
 
-        <!-- Kotak-kotak biru -->
+        <!-- Card Overload (Tablet) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-65dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="4"
-            android:gravity="center"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="20dp">
 
-            <View
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:background="@drawable/lebelspv"/>
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"/>
 
-
-            <View
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:background="@drawable/lebelspv"/>
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"/>
 
-            <View
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:background="@drawable/lebelspv"/>
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"/>
 
-            <View
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_margin="4dp"
-                android:background="@drawable/lebelspv"/>
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="#E3F2FD"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"/>
         </LinearLayout>
 
-        <!-- Chart -->
-        <View
+        <!-- Chart Placeholder (Tablet Size) -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:background="@drawable/label1"
-            android:layout_marginBottom="24dp" />
+            android:layout_height="450dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="#E3F2FD"
+            app:cardElevation="8dp"/>
     </LinearLayout>
 
     <!-- BUTTON KEMBALI -->
     <Button
         android:id="@+id/btn_back"
-        android:layout_width="100dp"
+        android:layout_width="101dp"
         android:layout_height="49dp"
         android:text="Kembali"
         android:textColor="#FFFFFF"

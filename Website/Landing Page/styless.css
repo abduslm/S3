@@ -292,10 +292,7 @@ grid-row-gap: 0px;
 
 .food-cards {
   display: grid;
-  /*grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));*/
-  grid-template-columns: repeat(4, 1fr);
-  /*grid-template-rows: auto 1fr auto;*/
-  /*grid-auto-rows: 1fr;*/
+  grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
   max-width: 1300px;
   margin: 0 auto;
@@ -338,6 +335,22 @@ grid-row-gap: 0px;
   font-size: 0.95rem;
   margin-bottom: 1.2rem;
 }
+
+/* Container untuk Scroll Horizontal */
+.food-slider {
+    max-width: 1400px; 
+    margin: 0 auto;
+    overflow-x: auto; 
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    white-space: nowrap;
+}
+
+/* Optional: Untuk menyembunyikan scrollbar di WebKit browsers (Chrome, Safari) */
+.food-slider::-webkit-scrollbar {
+    display: none;
+}
+
 
 .price {
   position: absolute;
@@ -605,8 +618,17 @@ grid-row-gap: 0px;
     transform: translateX(-50%) rotate(0deg);
   }
   .food-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+    gap: 2.5rem; 
+    max-width: none; 
+    margin: 0;
+    padding: 0 10px;
+    width: 280px; 
+    flex-shrink: 0;
+}
+
 #d11 { grid-area: 1 / 1 / 2 / 2; }
 #d12 { grid-area: 1 / 2 / 2 / 3; }
 #d13 { grid-area: 2 / 1 / 3 / 2; }

@@ -105,6 +105,9 @@
     .row > .col-md-6 {
         width: 50%; /* Pertahankan 2 kolom di breakpoint col-md-6 */
     }
+    .row > .col-md-6:nth-child(3) {
+        width: 100%;
+    }
 }
 
 /* FIX TABLET 820PX (Card Pengunjung mengambil 100% lebar) */

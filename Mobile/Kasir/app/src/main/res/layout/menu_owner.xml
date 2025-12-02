@@ -8,11 +8,10 @@
 
     <!-- ================= HEADER ================= -->
     <LinearLayout
-        android:id="@+id/header"
+        android:id="@+id/headermenuowner"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:background="#FFFFFF"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
@@ -20,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- LOGO + TEXT -->
+    <!-- LOGO + TEXT -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,7 +29,7 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="72dp"
-                android:src="@drawable/LogoKedaiTemeji"/>
+                android:src="@drawable/logokedaitemeji"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -99,7 +98,7 @@
         android:background="#F1F1F1"
         android:padding="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintTop_toBottomOf="@id/headermenuowner"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -197,7 +196,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="20dp"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintTop_toBottomOf="@id/headermenuowner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/sidebar"
         app:layout_constraintEnd_toEndOf="parent">

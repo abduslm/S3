@@ -8,8 +8,8 @@
             </div>
             
             <h4 class="contact-heading">CONTACT INFO</h4>
-            <p><strong>Phone:</strong> (031) 89531xx</p>
-            <p><strong>Email:</strong> halo@kedaitemeji.com</p>
+            <p><strong>Phone:</strong> 0852-5812-7597</p>
+            <p><strong>Email:</strong> kedaitemeji@gmail.com</p>
             
             <h4 class="hours-heading">OPENING HOURS</h4>
             <p>Monday - Sunday</p>
@@ -18,10 +18,11 @@
         
         <div class="footer-col">
             <h4>NAVIGATION</h4>
+            <p><a href="#home">Home</a></p>
             <p><a href="#menu">Menu</a></p>
-            <p><a href="#events">Events</a></p>
-            <p><a href="#gallery">Gallery</a></p>
-            <p><a href="#about">About</a></p>
+            <p><a href="#our cafe">Our Cafe</a></p>
+            <p><a href="#our team">Our Team</a></p>
+            <p><a href="#contact">Contact</a></p>
         </div>
 
         <div class="footer-col">

@@ -899,23 +899,14 @@ align-items: center;
 .team-image img {
  max-width: 80%;
  height: auto;
- border-radius: 50%;
  z-index: 2; 
  object-fit: cover;
+ border-radius: 10px;
 }
 
 /* Lingkaran oranye di belakang chef */
 .team-image::after {
-content: '';
- position: absolute;
- width: 400px; 
- height: 400px; 
- background-color: var(--accent);
- border-radius: 50%;
- z-index: 1; 
- top: 50%;
- right: 0%; /* Geser ke kanan kontainer */
- transform: translate(10%, -50%); /* Sesuaikan agar lingkaran di belakang chef */
+  display: none;
 }
 
 /* ========================================================== */
@@ -938,9 +929,13 @@ gap: 0.5rem;
  }
 
  .main-salad-img {
- transform: none; 
- box-shadow: none;
- max-width: 100%; 
+    width: 100%;
+    max-width: 500px;
+    transform: none; /* UBAH: Menghapus rotasi */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    position: relative;
+    border-radius: 10px;
  }
     
  .team-image::after {

@@ -68,6 +68,7 @@
   font-style: normal;
   color: #ffffff;
   background: #9b5732;
+  text-align: center;
 }
 .skin-green .sidebar-menu > li > a {
   border-left: 3px solid transparent;

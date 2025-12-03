@@ -20,8 +20,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
     <ImageView
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+            android:layout_width="64dp"
+            android:layout_height="72dp"
             android:src="@drawable/logokedaitemeji"
             android:layout_marginEnd="8dp"/>
 
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kedai Temeji"
-            android:textSize="20sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="#333333"/>
     </LinearLayout>
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Container Putih Rounded -->
+        <!-- Card Sidebar Background -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,86 +54,81 @@
             android:background="@drawable/menuspv"
             android:padding="12dp">
 
-            <!-- Menu 1: Dashboard -->
+            <!-- Dashboard Active -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:orientation="horizontal"
+                android:layout_height="50dp"
                 android:gravity="center_vertical"
+                android:paddingStart="16dp"
                 android:background="#1A246BFD"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:layout_marginTop="4dp">
+                android:paddingEnd="16dp">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/dashboard"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:tint="#2196F3"
-                    android:contentDescription="Dashboard" />
+                    android:src="@drawable/dashboard_owner" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
                     android:text="Dashboard"
                     android:textColor="#2196F3"
-                    android:textSize="14sp"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="sans-serif-medium" />
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"/>
             </LinearLayout>
 
             <!-- Menu 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:layout_marginTop="4dp">
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="8dp">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:src="@drawable/kelola"
-                    android:tint="#616161"
-                    android:contentDescription="Kelola Menu" />
+                    android:tint="#616161"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kelola Menu"
                     android:textColor="#616161"
-                    android:textSize="14sp"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="sans-serif-medium" />
+                    android:textSize="16sp"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"/>
             </LinearLayout>
 
             <!-- Menu 3 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:layout_marginTop="4dp">
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="8dp">
 
                 <ImageView
-                    android:layout_width="19dp"
-                    android:layout_height="23dp"
-                    android:contentDescription="Kelola Wifi"
+                    android:layout_width="24dp"
+                    android:layout_height="26dp"
                     android:src="@drawable/wifi"
-                    android:tint="#616161" />
+                    android:tint="#616161"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kelola Wifi"
                     android:textColor="#616161"
-                    android:textSize="14sp"
-                    android:layout_marginStart="12dp"
-                    android:fontFamily="sans-serif-medium" />
+                    android:textSize="16sp"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -256,13 +251,18 @@
     <!-- BUTTON KEMBALI -->
     <Button
         android:id="@+id/btn_back"
-        android:layout_width="101dp"
-        android:layout_height="49dp"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
         android:text="Kembali"
         android:textColor="#FFFFFF"
         android:backgroundTint="#FF4B4B"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/sidebar"
-        android:layout_marginStart="45dp"
-        android:layout_marginBottom="18dp"/>
+        app:layout_constraintEnd_toEndOf="@id/sidebar"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="25dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,11 +26,13 @@
         </div>
 
         <div class="footer-col">
-            <h4>DISHES</h4>
-            <p>Fish & Veggies</p>
-            <p>Tofu Chili</p>
-            <p>Egg & Cucumber</p>
-            <p>Lumpia with Sauce</p>
+            <h4>Our Signature Menu</h4>
+            <p><a href="#menu">Tempe Mendoan</a></p>
+            <p><a href="#menu">Sate Asin Bandung</a></p>
+            <p><a href="#menu">Rujak Cireng</a></p>
+            <p><a href="#menu">Pisang Goreng</a></p>
+            <p><a href="#menu">Kentang Goreng</a></p>
+            <p><a href="#menu">Kaya Toast Buttter</a></p>
         </div>
 
         <div class="footer-col footer-social-map">

@@ -234,6 +234,14 @@ a {
     background: transparent;
 }
 
+.rememberr {
+    position: absolute;
+    top: 350px; /* Posisi relatif terhadap form */
+    left: 60px; 
+    color:ghostwhite;
+    font-size: 18px;
+}
+
 .login-SPV .rectangle-4 {
     position: absolute;
     top: 0;

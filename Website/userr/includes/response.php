@@ -1,6 +1,6 @@
 <?php
 
-include('functions.php');
+include_once('functions.php');
 include_once('config.php');
 
 
@@ -24,36 +24,77 @@ if($action == 'login') {
     
     extract($_POST);
 
-    $username = mysqli_real_escape_string($mysqli,$_POST['username']);
-    $pass_encrypt = mysqli_real_escape_string($mysqli,$_POST['password']);
+	$user_password= $_POST['password'];
 
-    $query = "SELECT `id_userWeb`, `username`, `password`, `level` FROM `user_web` WHERE username='$username' AND `password` = '$pass_encrypt'";
+    $username = mysqli_real_escape_string($mysqli,$_POST['username']);
+    $pass_encrypt = mysqli_real_escape_string($mysqli,password_hash($_POST['password'], PASSWORD_BCRYPT));
+
+    $query = "SELECT `id_userWeb`, `username`, `password`, `level`, `Nama` FROM `user_web` WHERE username='$username'";
 
     $results = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
     $count = mysqli_num_rows($results);
 
     if($count > 0) {
-        $row = $results->fetch_assoc();
+		$row = $results->fetch_assoc();
+		if(password_verify($user_password, $row['password'])) {
+			// 1. UPDATE STATUS USER MENJADI ONLINE
+        $updateStatusQuery = "UPDATE user_web SET Status = 'ONLINE' WHERE id_userWeb = ?";
+        $updateStatusStmt = $mysqli->prepare($updateStatusQuery);
+        $updateStatusStmt->bind_param("s", $row['id_userWeb']);
+        $updateStatusStmt->execute();
+        $updateStatusStmt->close();
 
-		$_SESSION['login_id'] = $row['id_userWeb'];
+        // 2. INSERT RIWAYAT AKTIVITAS (LOGIN)
+        $tanggal = date('Y-m-d');
+        $jam = date('H:i:s');
+        $aktivitas = "Login";
+        $keterangan = "User " . $row['username'] . " (" . $row['Nama'] . ") berhasil login ke sistem";
+        
+        $insertRiwayatQuery = "INSERT INTO riwayat_aktivitas (tanggal, jam, aktivitas, keterangan, id_userWeb) VALUES (?, ?, ?, ?, ?)";
+        $insertRiwayatStmt = $mysqli->prepare($insertRiwayatQuery);
+        $insertRiwayatStmt->bind_param("sssss", $tanggal, $jam, $aktivitas, $keterangan, $row['id_userWeb']);
+        $insertRiwayatStmt->execute();
+        $insertRiwayatStmt->close();
+
+        // 3. SET SESSION
+        $_SESSION['login_id'] = $row['id_userWeb'];
         $_SESSION['login_username'] = $row['username'];
         $_SESSION['user_level'] = $row['level'];
 
-        if (isset($_POST['remember'])) {    
-            session_set_cookie_params('604800');
-            session_regenerate_id(true);
+        // 4. PROSES REMEMBER ME JIKA DIPILIH
+        if (isset($_POST['remember'])) {
+            // Generate token acak
+            $token = bin2hex(random_bytes(32));
+            $expiry = date('Y-m-d H:i:s', strtotime('+30 days')); // 30 hari
+            
+            // Simpan token ke database
+            $updateTokenQuery = "UPDATE user_web SET remember_token = ?, token_expiry = ? WHERE id_userWeb = ?";
+            $updateTokenStmt = $mysqli->prepare($updateTokenQuery);
+            $updateTokenStmt->bind_param("sss", $token, $expiry, $row['id_userWeb']);
+            $updateTokenStmt->execute();
+            $updateTokenStmt->close();
+            
+            // Set cookie (30 hari)
+            setcookie('remember_token', $token, time() + (30 * 24 * 60 * 60), '/', '', true, true);
         }  
         
         echo json_encode(array(
             'status' => 'Success',
             'message'=> 'Login Berhasil!',
-            'level' => $row['level']
+            'level' => $row['level'],
+            'nama' => $row['Nama']
         ));
-        
+		}else{
+		echo json_encode(array(
+			'status' => 'Error',
+			'message' => 'Login Gagal! password salah.'
+		));
+		}
+
     } else {
         echo json_encode(array(
             'status' => 'Error',
-            'message' => 'Login Gagal! Username atau password salah.'
+            'message' => 'Login Gagal! Username tidak ditemukan.'
         ));
     }
 }
@@ -69,7 +110,7 @@ if($action == 'add_user') {
 	$user_email = $_POST['email'];
 	$user_nohp = $_POST['noHp'];
 	$user_username = $_POST['username'];
-	$user_password = $_POST['password'];
+	$user_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 	$user_level = $_POST['level'];
 
 	if(usernameCheck($user_username, $_POST['platform']) > 0) {
@@ -103,16 +144,22 @@ if($action == 'add_user') {
 	if($stmt === false) {
 		trigger_error('Wrong SQL: ' . $query . ' Error: ' . $mysqli->error, E_USER_ERROR);
 	}
-	$user_password = $user_password; //md5
 
 	$stmt->bind_param('ssssss', $user_nama, $user_email, $user_nohp, $user_username,$user_password,$user_level);
 
 	if($stmt->execute()){
-		echo json_encode(array(
+		$lastIdH=lastIdHistory();
+        $updateRiwayatQuery = "UPDATE `riwayat_aktivitas` SET `id_userWeb`=? WHERE id_riwayat=?";
+        $updateRiwayatStmt = $mysqli->prepare($updateRiwayatQuery);
+        $updateRiwayatStmt->bind_param("ss", $_SESSION['login_id'], $lastIdH);
+        if($updateRiwayatStmt->execute()){
+			echo json_encode(array(
 			'status' => 'Success',
 			'message'=> 'User berhasil ditambahkan!',
 			'platform' => $_POST['platform']
 		));
+		};
+		
 
 	} else {
 		echo json_encode(array(
@@ -135,7 +182,7 @@ if($action == 'update_user') {
 	$user_email = $_POST['email'];
 	$user_nohp = $_POST['noHp'];
 	$user_username = $_POST['username'];
-	$user_password = $_POST['password'];
+	$user_password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 	$user_level = $_POST['level'];
 	$user_lama= isset($_POST['usernameL']) ? $_POST['usernameL'] : $user_username;
 
@@ -192,6 +239,12 @@ if($action == 'update_user') {
 	}
 
 	if($stmt->execute()){
+		$lastIdH=lastIdHistory();
+		$updateRiwayatQuery = "UPDATE `riwayat_aktivitas` SET `id_userWeb`=? WHERE id_riwayat=?";
+        $updateRiwayatStmt = $mysqli->prepare($updateRiwayatQuery);
+        $updateRiwayatStmt->bind_param("ss", $_SESSION['login_id'], $lastIdH);
+        $updateRiwayatStmt->execute();
+        $updateRiwayatStmt->close();
 		echo json_encode(array(
 			'status' => 'Success',
 			'message'=> 'User website telah berhasil di update!',
@@ -225,7 +278,12 @@ if($action == 'delete_user_web') {
 	$stmt->bind_param('s',$id);
 
 	if($stmt->execute()){
-
+		$lastIdH=lastIdHistory();
+		$updateRiwayatQuery = "UPDATE `riwayat_aktivitas` SET `id_userWeb`=? WHERE id_riwayat=?";
+        $updateRiwayatStmt = $mysqli->prepare($updateRiwayatQuery);
+        $updateRiwayatStmt->bind_param("ss", $_SESSION['login_id'], $lastIdH);
+        $updateRiwayatStmt->execute();
+        $updateRiwayatStmt->close();
 		echo json_encode(array(
 			'status' => 'Success',
 			'message'=> 'User berhasil di hapus!'
@@ -267,6 +325,12 @@ if($action == 'delete_user') {
     $stmt->bind_param('i', $id);
 
     if($stmt->execute()){
+		$lastIdH=lastIdHistory();
+		$updateRiwayatQuery = "UPDATE `riwayat_aktivitas` SET `id_userWeb`=? WHERE id_riwayat=?";
+        $updateRiwayatStmt = $mysqli->prepare($updateRiwayatQuery);
+        $updateRiwayatStmt->bind_param("ss", $_SESSION['login_id'], $lastIdH);
+        $updateRiwayatStmt->execute();
+        $updateRiwayatStmt->close();
         echo json_encode(array(
             'status' => 'Success',
             'message'=> 'User berhasil dihapus!'

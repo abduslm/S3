@@ -90,6 +90,21 @@ $(document).ready(function() {
         }
     }
 
+
+    $('.sidebar-menu').on('click', '.ajax-menu:not(.edit-user .btnBack)', function(e) {
+        // Jangan tangani jika elemen memiliki class no-ajax
+        if ($(this).hasClass('no-ajax')) {
+            return; // Biarkan browser menangani link secara normal
+        }
+        
+        e.preventDefault();
+        var page = $(this).data('page');
+        
+        updateActiveMenu($(this));
+        history.pushState(null, null, '?page=' + page);
+        loadContent(page);
+    });
+
     // Handle browser back/forward buttons
     $(window).on('popstate', function() {
         var urlParams = new URLSearchParams(window.location.search);

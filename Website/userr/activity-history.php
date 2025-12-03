@@ -1,9 +1,10 @@
 <?php
 include('includes/session.php');
-
 // Pagination setup
 $records_per_page = 10;
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+// Ambil dari page_number (bukan page)
+$page = isset($_GET['page_number']) ? (int)$_GET['page_number'] : 1;
+if ($page < 1) $page = 1; // Validasi minimal halaman 1
 $start_from = ($page - 1) * $records_per_page;
 
 // Filter setup
@@ -81,6 +82,8 @@ $activities_result = $mysqli->query($activities_query);
                             <div class="panel-body">
                                 <form method="GET" id="filterForm">
                                     <input type="hidden" name="page" value="activity-history">
+                                    <input type="hidden" name="page_number" id="page_number" value="<?php echo $page; ?>">
+        
                                     
                                     <div class="row">
                                         <div class="col-md-3">
@@ -113,18 +116,21 @@ $activities_result = $mysqli->query($activities_query);
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>&nbsp;</label>
-                                                <div>
-                                                    <button type="submit" class="btn btn-primary">
-                                                        <i class="fa fa-search"></i> Filter
-                                                    </button>
-                                                    <a href="?page=activity-history" class="btn btn-default">
-                                                        <i class="fa fa-refresh"></i> Reset
-                                                    </a>
-                                                </div>
+                                        <div class="form-group">
+                                            <label>&nbsp;</label>
+                                            <div>
+                                                <!-- Tombol Filter - tetapkan page_number=1 -->
+                                                <button type="submit" class="btn btn-primary" onclick="document.getElementById('page_number').value = 1;">
+                                                    <i class="fa fa-search"></i> Filter
+                                                </button>
+                                                
+                                                <!-- Tombol Reset - hapus semua filter -->
+                                                <a href="?page=activity-history" class="btn btn-default no-ajax">
+                                                    <i class="fa fa-refresh"></i> Reset
+                                                </a>
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                 </form>
                             </div>
@@ -259,29 +265,51 @@ $activities_result = $mysqli->query($activities_query);
                                     </div>
 
                                     <!-- Pagination -->
+                                    <!-- Pagination -->
                                     <div class="text-center">
                                         <ul class="pagination">
                                             <?php if ($page > 1): ?>
-                                                <li><a href="?page=activity-history&tanggal=<?php echo $filter_tanggal; ?>&aktivitas=<?php echo $filter_aktivitas; ?>&user=<?php echo $filter_user; ?>&page=<?php echo $page - 1; ?>">«</a></li>
+                                                <li>
+                                                    <a href="?page=activity-history&tanggal=<?php echo urlencode($filter_tanggal); ?>&aktivitas=<?php echo urlencode($filter_aktivitas); ?>&user=<?php echo urlencode($filter_user); ?>&page_number=<?php echo ($page - 1); ?>" class="no-ajax">
+                                                        «
+                                                    </a>
+                                                </li>
                                             <?php endif; ?>
 
-                                            <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                                            <?php 
+                                            // Tampilkan maksimal 5 halaman di sekitar halaman aktif
+                                            $start_page = max(1, $page - 2);
+                                            $end_page = min($total_pages, $start_page + 4);
+                                            
+                                            // Adjust jika di awal
+                                            if ($end_page - $start_page < 4) {
+                                                $start_page = max(1, $end_page - 4);
+                                            }
+                                            
+                                            for ($i = $start_page; $i <= $end_page; $i++): 
+                                            ?>
                                                 <li class="<?php echo ($i == $page) ? 'active' : ''; ?>">
-                                                    <a href="?page=activity-history&tanggal=<?php echo $filter_tanggal; ?>&aktivitas=<?php echo $filter_aktivitas; ?>&user=<?php echo $filter_user; ?>&page=<?php echo $i; ?>">
+                                                    <a href="?page=activity-history&tanggal=<?php echo urlencode($filter_tanggal); ?>&aktivitas=<?php echo urlencode($filter_aktivitas); ?>&user=<?php echo urlencode($filter_user); ?>&page_number=<?php echo $i; ?>" class="no-ajax">
                                                         <?php echo $i; ?>
                                                     </a>
                                                 </li>
                                             <?php endfor; ?>
 
                                             <?php if ($page < $total_pages): ?>
-                                                <li><a href="?page=activity-history&tanggal=<?php echo $filter_tanggal; ?>&aktivitas=<?php echo $filter_aktivitas; ?>&user=<?php echo $filter_user; ?>&page=<?php echo $page + 1; ?>">»</a></li>
+                                                <li>
+                                                    <a href="?page=activity-history&tanggal=<?php echo urlencode($filter_tanggal); ?>&aktivitas=<?php echo urlencode($filter_aktivitas); ?>&user=<?php echo urlencode($filter_user); ?>&page_number=<?php echo ($page + 1); ?>" class="no-ajax">
+                                                        »
+                                                    </a>
+                                                </li>
                                             <?php endif; ?>
                                         </ul>
+                                        
                                         <p class="text-muted">
-                                            Menampilkan <?php echo ($start_from + 1); ?> - <?php echo min($start_from + $records_per_page, $total_records); ?> dari <?php echo number_format($total_records); ?> aktivitas
+                                            Menampilkan <?php echo ($start_from + 1); ?> - <?php echo min($start_from + $records_per_page, $total_records); ?> 
+                                            dari <?php echo number_format($total_records); ?> aktivitas
+                                            (Halaman <?php echo $page; ?> dari <?php echo $total_pages; ?>)
                                         </p>
                                     </div>
-
                                 <?php else: ?>
                                     <div class="alert alert-info text-center">
                                         <i class="fa fa-info-circle"></i> Tidak ada riwayat aktivitas yang ditemukan.
@@ -295,25 +323,3 @@ $activities_result = $mysqli->query($activities_query);
         </div>
     </div>
 </div>
-
-<script>
-
-// Auto refresh every 30 seconds jika di halaman pertama
-<?php if ($page == 1): ?>
-setTimeout(function() {
-    location.reload();
-}, 30000);
-<?php endif; ?>
-
-// Initialize DataTables
-$(document).ready(function() {
-    $('#activity-table').DataTable({
-        "paging": false,
-        "searching": false,
-        "ordering": true,
-        "info": false,
-        "autoWidth": false,
-        "order": [[1, 'desc']] // Order by date descending
-    });
-});
-</script>

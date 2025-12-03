@@ -87,7 +87,7 @@ $activities_result = $mysqli->query($activities_query);
                                             <div class="form-group">
                                                 <label for="tanggal">Tanggal</label>
                                                 <input type="date" class="form-control" id="tanggal" name="tanggal" 
-                                                    value="<?php echo htmlspecialchars($filter_tangdal); ?>">
+                                                    value="<?php echo htmlspecialchars($filter_tanggal); ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -267,7 +267,7 @@ $activities_result = $mysqli->query($activities_query);
 
                                             <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                                                 <li class="<?php echo ($i == $page) ? 'active' : ''; ?>">
-                                                    <a href="?page=activity-history&tanggal=<?php echo $filter_tangdal; ?>&aktivitas=<?php echo $filter_aktivitas; ?>&user=<?php echo $filter_user; ?>&page=<?php echo $i; ?>">
+                                                    <a href="?page=activity-history&tanggal=<?php echo $filter_tanggal; ?>&aktivitas=<?php echo $filter_aktivitas; ?>&user=<?php echo $filter_user; ?>&page=<?php echo $i; ?>">
                                                         <?php echo $i; ?>
                                                     </a>
                                                 </li>

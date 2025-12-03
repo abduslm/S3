@@ -16,6 +16,7 @@ $(document).ready(function() {
             data: { page: page, ...params },
             success: function(data) {
                 $('#main-content').html(data);
+                ceklog()
                 initializeComponents();
             },
             error: function(xhr, status, error) {
@@ -36,15 +37,6 @@ $(document).ready(function() {
             $('.data-table').DataTable();
         }
         
-        // Initialize datetime picker jika ada
-        if ($.fn.datetimepicker) {
-            $('.datetimepicker').datetimepicker();
-        }
-        
-        // Initialize password strength jika ada
-        if ($.fn.password) {
-            $('.password').password();
-        }
     }
 
     // Event handler untuk menu utama di sidebar
@@ -117,7 +109,6 @@ $(document).ready(function() {
         var urlParams = new URLSearchParams(window.location.search);
         var page = urlParams.get('page') || 'dashboard';
         var id = urlParams.get('id') || '';
-        
         var params = {};
         if (id) {
             params.id = id;
@@ -129,3 +120,11 @@ $(document).ready(function() {
     // Load initial content
     loadInitialContent();
 });
+
+function ceklog(){
+    var urlParams = new URLSearchParams(window.location.search); 
+        for (const [key, value] of urlParams.entries()) {
+  console.log(key, value);
+}
+
+}

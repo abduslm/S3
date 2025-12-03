@@ -142,4 +142,25 @@ function validatePhoneNumber($phone) {
     );
 }
 
+
+
+function lastIdHistory() {
+	$mysqli = new mysqli(DATABASE_HOST, DATABASE_USER, DATABASE_PASS, DATABASE_NAME, DATABASE_PORT);
+
+	if ($mysqli->connect_error) {
+	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+	}
+
+	$query="SELECT `id_riwayat` FROM `riwayat_aktivitas` order by id_riwayat desc limit 1";
+	// mysqli select query
+	$results = $mysqli->query($query);
+	$user = $results->fetch_assoc();
+
+	$results->free();
+
+	$mysqli->close();
+
+	return $user['id_riwayat'];
+}
+
 ?>

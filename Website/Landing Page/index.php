@@ -1,3 +1,4 @@
+<?php include 'visitor.php'; ?>
 <?php include 'header.php'; ?>
     <section class="hero" id="home">
       <div class="hero-content">

@@ -148,12 +148,11 @@
         android:gravity="center"
         android:paddingTop="1.6dp"
         android:text="Kembali"
-        android:textAllCaps="false"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:backgroundTint="@null"
-        app:layout_constraintTop_toBottomOf="@+id/pesanan" />
+        app:layout_constraintTop_toBottomOf="@+id/pesanan"
+        app:backgroundTint="@null"/>
 
     <LinearLayout
         android:id="@+id/pesanan1"
@@ -242,6 +241,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/goreng"
             app:layout_constraintBottom_toBottomOf="@+id/goreng" />
+
         <ImageView
             android:id="@+id/top_view_de"
             android:layout_width="37dp"
@@ -289,7 +289,53 @@
             android:layout_marginTop="-25dp"
             android:layout_marginStart="306dp"
             />
+
+
+            <View
+                android:id="@+id/line_2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/garis"
+
+                android:layout_marginTop="300dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
+
+        <Button
+            android:id="@+id/buttonprogres"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:text="In Progress"
+            android:background="@drawable/inprogress"
+            android:textAllCaps="false"
+            android:fontFamily="@font/manrope"
+            android:layout_marginTop="50dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#665353"
+            app:backgroundTint="@null"
+            android:layout_gravity="center" />
+
+
+        <Button
+            android:id="@+id/buttonselesai"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:text="Selesai"
+            android:background="@drawable/buttonselesai"
+            android:textAllCaps="false"
+            android:fontFamily="@font/manrope"
+            android:layout_marginTop="50dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#665353"
+            app:backgroundTint="@null"
+            android:layout_gravity="center" />
     </LinearLayout>
+
 
 
 

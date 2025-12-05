@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="72dp"
+            android:src="@drawable/logokedaitemeji"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Logo Kedai" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kedai Temeji"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+        <TextView
+            android:id="@+id/search_text"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:text="Search"
+            android:layout_marginStart="60dp"
+            android:paddingStart="15dp"
+            android:paddingTop="8dp"
+
+            android:paddingBottom="8dp"
+            android:background="@drawable/search"
+            android:drawableStart="@drawable/cari"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            />
+
+    </LinearLayout>
+
+    <!-- SIDEBAR -->
+    <LinearLayout
+        android:id="@+id/sidebar"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="#F1F1F1"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <!-- Card Sidebar Background -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/menuspv"
+            android:padding="12dp">
+
+            <!-- Dashboard Active -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:tint="#616161"
+                    android:src="@drawable/dashboard" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:text="Dashboard"
+                    android:textColor="#616161"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+
+            <!-- Menu 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:background="#1A246BFD"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/kelola"
+                    android:tint="#2196F3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kelola Menu"
+                    android:textColor="#2196F3"
+                    android:textSize="16sp"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+
+            <!-- Menu 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/wifi"
+                    android:tint="#616161"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kelola Wifi"
+                    android:textColor="#616161"
+                    android:textSize="16sp"
+                    android:layout_marginStart="14dp"
+                    android:fontFamily="sans-serif-medium"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="0dp"
+        android:layout_height="680dp"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
+        android:backgroundStart="@drawable/radius"
+        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <View
+            android:id="@+id/rectangle_4"
+            android:layout_width="340dp"
+            android:layout_height="610dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/abu2"
+            />
+
+        <TextView
+            android:id="@+id/namawifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-560dp"
+            android:text="Nama Wifi"
+            android:textSize="15sp"
+            android:textColor="#844B16"
+            android:fontFamily="@font/poppins"
+            android:layout_marginStart="620dp"
+            android:gravity="top"
+            />
+        <View
+            android:id="@+id/namawifi2"
+            android:layout_width="287dp"
+            android:layout_height="44dp"
+            android:background="@drawable/namawifi2"
+            android:layout_marginTop="1dp"
+            android:layout_marginStart="292dp"
+            android:layout_gravity="center_horizontal"
+            />
+        <TextView
+            android:id="@+id/passwordwifi"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Password Wifi"
+            android:textSize="15sp"
+            android:textColor="#844B16"
+            android:fontFamily="@font/poppins"
+            android:layout_marginStart="620dp"
+            android:gravity="top"
+            />
+        <View
+            android:id="@+id/passwordwifi2"
+            android:layout_width="287dp"
+            android:layout_height="44dp"
+            android:background="@drawable/namawifi2"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="292dp"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <Button
+            android:id="@+id/perbarui"
+            android:layout_width="137dp"
+            android:layout_height="46dp"
+            android:text="Perbarui"
+            android:layout_marginStart="610dp"
+            android:layout_marginTop="300dp"
+            android:textSize="20sp"
+            android:background="@drawable/perbarui"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_bold"
+            app:backgroundTint="@null"
+            />
+
+        <Button
+            android:id="@+id/tambah"
+            android:layout_width="137dp"
+            android:layout_height="46dp"
+            android:text="Button"
+            android:layout_marginStart="760dp"
+            android:layout_marginTop="-30dp"/>
+
+
+    </LinearLayout>
+
+
+    <!-- BUTTON KEMBALI -->
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="140dp"
+        android:layout_height="41.6dp"
+        android:text="Kembali"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/background_kasir1"
+        android:backgroundTint="#FF4B4B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@id/sidebar"
+        app:layout_constraintEnd_toEndOf="@id/sidebar"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="25dp"
+        app:backgroundTint="@null"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

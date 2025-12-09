@@ -27,7 +27,6 @@ if($action == 'login') {
 	$user_password= $_POST['password'];
 
     $username = mysqli_real_escape_string($mysqli,$_POST['username']);
-    $pass_encrypt = mysqli_real_escape_string($mysqli,password_hash($_POST['password'], PASSWORD_BCRYPT));
 
     $query = "SELECT `id_userWeb`, `username`, `password`, `level`, `Nama` FROM `user_web` WHERE username='$username'";
 
@@ -37,35 +36,22 @@ if($action == 'login') {
     if($count > 0) {
 		$row = $results->fetch_assoc();
 		if(password_verify($user_password, $row['password'])) {
-			// 1. UPDATE STATUS USER MENJADI ONLINE
+			// UPDATE STATUS USER MENJADI ONLINE
         $updateStatusQuery = "UPDATE user_web SET Status = 'ONLINE' WHERE id_userWeb = ?";
         $updateStatusStmt = $mysqli->prepare($updateStatusQuery);
         $updateStatusStmt->bind_param("s", $row['id_userWeb']);
         $updateStatusStmt->execute();
-        $updateStatusStmt->close();
-
-        // 2. INSERT RIWAYAT AKTIVITAS (LOGIN)
-        $tanggal = date('Y-m-d');
-        $jam = date('H:i:s');
-        $aktivitas = "Login";
-        $keterangan = "User " . $row['username'] . " (" . $row['Nama'] . ") berhasil login ke sistem";
-        
-        $insertRiwayatQuery = "INSERT INTO riwayat_aktivitas (tanggal, jam, aktivitas, keterangan, id_userWeb) VALUES (?, ?, ?, ?, ?)";
-        $insertRiwayatStmt = $mysqli->prepare($insertRiwayatQuery);
-        $insertRiwayatStmt->bind_param("sssss", $tanggal, $jam, $aktivitas, $keterangan, $row['id_userWeb']);
-        $insertRiwayatStmt->execute();
-        $insertRiwayatStmt->close();
-
-        // 3. SET SESSION
+		// SET SESSION
         $_SESSION['login_id'] = $row['id_userWeb'];
         $_SESSION['login_username'] = $row['username'];
         $_SESSION['user_level'] = $row['level'];
+        $updateStatusStmt->close();
 
-        // 4. PROSES REMEMBER ME JIKA DIPILIH
+        // REMEMBER ME
         if (isset($_POST['remember'])) {
             // Generate token acak
             $token = bin2hex(random_bytes(32));
-            $expiry = date('Y-m-d H:i:s', strtotime('+30 days')); // 30 hari
+            $expiry = date('Y-m-d H:i:s', strtotime('+30 days'));
             
             // Simpan token ke database
             $updateTokenQuery = "UPDATE user_web SET remember_token = ?, token_expiry = ? WHERE id_userWeb = ?";
@@ -81,9 +67,10 @@ if($action == 'login') {
         echo json_encode(array(
             'status' => 'Success',
             'message'=> 'Login Berhasil!',
-            'level' => $row['level'],
-            'nama' => $row['Nama']
+            'level' => $_SESSION['user_level'],//$row['level'],
+            'nama' => $_SESSION['login_username'],//$row['Nama']
         ));
+
 		}else{
 		echo json_encode(array(
 			'status' => 'Error',
@@ -105,6 +92,7 @@ if($action == 'add_user') {
 	if ($mysqli->connect_error) {
 	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
+	session_start();
 
 	$user_nama = $_POST['nama'];
 	$user_email = $_POST['email'];
@@ -176,6 +164,7 @@ if($action == 'update_user') {
 	if ($mysqli->connect_error) {
 	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
+	session_start();
 
 	$getID = $_POST['id'];
 	$user_nama = $_POST['nama'];
@@ -207,7 +196,7 @@ if($action == 'update_user') {
     $user_nohp = $phone_valid['cleaned'];
 
 	if($_POST['platform']=='website'){
-		if($user_password == ''){
+		if($user_password == empty('')){
 			$query = "UPDATE user_web SET Nama=?, Email=?, NoHp=?, username=?, level=? WHERE id_userWeb = ?";
 		}else{
 			$query = "UPDATE user_web SET Nama=?, Email=?, NoHp=?, username=?, password=?, level=? WHERE id_userWeb = ?";
@@ -225,13 +214,12 @@ if($action == 'update_user') {
 		trigger_error('Wrong SQL: ' . $query . ' Error: ' . $mysqli->error, E_USER_ERROR);
 	}
 
-	if($user_password == ''){
+	if($user_password == empty('')){
 		$stmt->bind_param(
 			'ssssss',
 			$user_nama,$user_email,$user_nohp,$user_username,$user_level,$getID
 		);
 	} else {
-		$user_password = $user_password; //md5
 		$stmt->bind_param(
 			'sssssss',
 			$user_nama,$user_email,$user_nohp,$user_username,$user_password,$user_level,$getID
@@ -260,44 +248,6 @@ if($action == 'update_user') {
 	$mysqli->close();
 }
 
-// Delete User web
-if($action == 'delete_user_web') {
-
-	if ($mysqli->connect_error) {
-	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-	}
-	$id = $_POST["delete"];
-
-	$query = "DELETE FROM `user_web` WHERE id = ?";
-
-	$stmt = $mysqli->prepare($query);
-	if($stmt === false) {
-		trigger_error('Wrong SQL: ' . $query . ' Error: ' . $mysqli->error, E_USER_ERROR);
-	}
-
-	$stmt->bind_param('s',$id);
-
-	if($stmt->execute()){
-		$lastIdH=lastIdHistory();
-		$updateRiwayatQuery = "UPDATE `riwayat_aktivitas` SET `id_userWeb`=? WHERE id_riwayat=?";
-        $updateRiwayatStmt = $mysqli->prepare($updateRiwayatQuery);
-        $updateRiwayatStmt->bind_param("ss", $_SESSION['login_id'], $lastIdH);
-        $updateRiwayatStmt->execute();
-        $updateRiwayatStmt->close();
-		echo json_encode(array(
-			'status' => 'Success',
-			'message'=> 'User berhasil di hapus!'
-		));
-
-	} else {
-	    echo json_encode(array(
-	    	'status' => 'Error',
-	      	'message' => 'Terdapat kesalahan, mohon ulangi lagi.<pre>'.$mysqli->error.'</pre><pre>'.$query.'</pre>'
-	    ));
-	}
-	$mysqli->close();
-
-}
 
 // Delete User
 if($action == 'delete_user') {
@@ -305,6 +255,7 @@ if($action == 'delete_user') {
     if ($mysqli->connect_error) {
         die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
     }
+	session_start();
 
     $id = intval($_POST["delete"]);
     $pp = $_POST['data-platform'];
@@ -331,10 +282,10 @@ if($action == 'delete_user') {
         $updateRiwayatStmt->bind_param("ss", $_SESSION['login_id'], $lastIdH);
         $updateRiwayatStmt->execute();
         $updateRiwayatStmt->close();
-        echo json_encode(array(
-            'status' => 'Success',
-            'message'=> 'User berhasil dihapus!'
-        ));
+		echo json_encode(array(
+			'status' => 'Success',
+			'message'=> 'User Mobile telah berhasil di Hapus!',
+		));
     } else {
         echo json_encode(array(
             'status' => 'Error',

@@ -3,7 +3,7 @@
 ini_set('error_reporting', E_ALL);
 
 // DATABASE INFORMATION
-define('DATABASE_HOST', 'localhost'); //getenv('IP')
+define('DATABASE_HOST', 'Localhost'); //getenv('IP')
 define('DATABASE_NAME', 'pos');
 define('DATABASE_USER', 'root');
 define('DATABASE_PASS', '');

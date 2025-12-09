@@ -26,18 +26,6 @@ if(!isset($_SESSION['login_username'])) {
             $updateStatusStmt->bind_param("s", $user['user_id']);
             $updateStatusStmt->execute();
             $updateStatusStmt->close();
-            
-            // Insert riwayat aktivitas
-            $tanggal = date('Y-m-d');
-            $jam = date('H:i:s');
-            $aktivitas = "Auto-Login";
-            $keterangan = "User " . $user['username'] . " login otomatis via remember me";
-            
-            $insertRiwayatQuery = "INSERT INTO riwayat_aktivitas (tanggal, jam, aktivitas, keterangan, id_userWeb) VALUES (?, ?, ?, ?, ?)";
-            $insertRiwayatStmt = $mysqli->prepare($insertRiwayatQuery);
-            $insertRiwayatStmt->bind_param("sssss", $tanggal, $jam, $aktivitas, $keterangan, $user['user_id']);
-            $insertRiwayatStmt->execute();
-            $insertRiwayatStmt->close();
 
             $_SESSION['login_username'] = $user['username'];
             $_SESSION['user_id'] = $user['user_id'];

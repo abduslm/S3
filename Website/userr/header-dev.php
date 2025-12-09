@@ -21,7 +21,6 @@ include('includes/functions.php');
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="css/AdminLTE.css">
- 
   <link rel="stylesheet" href="css/skin1.css">
   
   	<!-- JS -->
@@ -159,7 +158,6 @@ include('includes/functions.php');
     <!-- Main content -->
     <section class="content">
       <div id="main-content">
-        <!-- Konten akan dimuat di sini via AJAX -->
         <div class="text-center" style="padding: 50px;">
           <i class="fa fa-spinner fa-spin fa-3x"></i>
           <p>Loading...</p>
@@ -169,6 +167,7 @@ include('includes/functions.php');
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
 
 </div>
 <!-- ./wrapper -->

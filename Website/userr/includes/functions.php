@@ -44,7 +44,11 @@ function getUsers(string $plat) {
 					<td>'.$row["Email"].'</td>
 					<td>'.$row["NoHp"].'</td>
 				    <td>'.$row["level"].'</td>
-					<td>'.$row["Status"].'</td>
+					<td class="<?php echo ($row["Status"] == "ONLINE") ? "succes" : "info"; ?>">
+						<?php echo $row["Status"]; ?>
+					</td>
+
+
 				    <td><a href="#" class="ajax-menu edit-user" data-page="user-edit-web" data-user-id="'.$row["id_userWeb"].'" data-platform="website"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a data-user-id="'.$row["id_userWeb"].'" data-platform="website" class="btn btn-danger btn-xs delete-user"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 			    </tr>
 		    ';

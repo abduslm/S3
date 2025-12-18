@@ -3,6 +3,9 @@
     <!-- Warna semi transparan seperti sebelumnya -->
     <solid android:color="@color/sidebarAktifBg" />
 
+    <stroke android:color="#02359A"
+        android:width="1dp"/>
+
     <!-- Opsional: tambahkan bayangan halus -->
     <padding
         android:left="2dp"

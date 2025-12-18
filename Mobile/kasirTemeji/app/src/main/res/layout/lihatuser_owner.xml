@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6FA">
+
+    <!-- ================= HEADER ================= -->
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <LinearLayout
+        android:id="@+id/mainContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- SEARCH FILTER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <!-- Search -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+
+                android:paddingStart="14dp"
+                android:paddingEnd="12dp"
+                android:gravity="center_vertical">
+                <!-- android:background="@drawable/filter_bg" -->
+
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/ic_cari"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Search"
+                    android:textSize="14sp"
+                    android:background="@android:color/transparent"
+                    android:paddingStart="10dp"/>
+            </LinearLayout>
+
+            <!-- Role -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_weight="0.8"
+                >
+                <!-- android:background="@drawable/filter_bg" -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Role"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- Date -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginStart="12dp"
+                android:layout_weight="0.8"
+                >
+                <!-- android:background="@drawable/filter_bg" -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- TABLE -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_table_user"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="18dp"
+            app:cardElevation="8dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TableLayout
+                    android:id="@+id/table_layout_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- Header -->
+                    <TableRow android:background="#243447">
+                        <TextView android:text="Full Name" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="Email" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="Username" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="Role" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="Joined Date" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="Last Active" android:textColor="#fff" android:padding="12dp"/>
+                    </TableRow>
+
+
+                </TableLayout>
+            </ScrollView>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- BUTTON KEMBALI -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red">#EF0A11</color>
+    <color name="light_background">#BFBAC6</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#1C6AAF</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#18B821</color>
+    <color name="lightGray">#D3D3D3</color>
+    <color name="orangeAccent">#FFAB40</color>
+    <color name="blue">#0000FF</color>
+
+    <color name="teksColor">#FF000000</color>
+    <color name="sidebarTeks">#616161</color>
+    <color name="sidebarAktifTeks">#2196F3</color>
+    <color name="sidebarBg">@null</color>
+    <color name="sidebarAktifBg">#1A246BFD</color>
+
+    <!-- Primary Colors -->
+    <color name="colorPrimary">#FF6B35</color>
+    <color name="colorPrimaryDark">#D45A2C</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_white">#FFFFFF</color>
+
+    <!-- Background Colors -->
+    <color name="background_light">#FAFAFA</color>
+    <color name="background_dark">#303030</color>
+
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+    <color name="warning">#FF9800</color>
+    <color name="info">#2196F3</color>
+
+    <color name="primary">#FF6F00</color>
+    <color name="primary_dark">#E65100</color>
+    <color name="secondary">#2196F3</color>
+    <color name="gray_light">#F5F5F5</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="gray_dark">#616161</color>
+
+</resources>

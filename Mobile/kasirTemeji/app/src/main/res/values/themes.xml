@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.KasirTemeji" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+    </style>
+    <style name="Theme.KasirTemeji.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/black</item>
+
+
+    </style>
+    <style name="Theme.KasirTemeji.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.KasirTemeji.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

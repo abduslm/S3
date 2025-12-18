@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F1F1F1"
+    tools:context=".activity.MainSPV">
+
+    <!-- HEADER -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="72dp"
+            android:src="@drawable/logokedaitemeji"
+            android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kedai Temeji"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#333333"/>
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/search"
+            android:drawableStart="@drawable/ic_cari"
+            android:drawablePadding="8dp"
+            android:inputType="text"
+            android:hint="Cari"
+            android:paddingHorizontal="12dp" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btn_addproduct"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bg_addproduct"
+            android:paddingHorizontal="16dp"
+            android:text="+ Add Product"
+            android:textColor="#FFFFFF"
+            app:tint="@null"/>
+
+    </LinearLayout>
+
+    <!-- SIDEBAR -->
+    <LinearLayout
+        android:id="@+id/sidebar"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:background="#F1F1F1"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/main_content">
+
+        <!-- Card Sidebar Background -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical|left"
+            android:background="@drawable/bg_sidebar"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/btn_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:padding="12dp"
+                android:layout_gravity="center_vertical"
+                android:text="Dashboard"
+                android:textColor="@color/sidebarTeks"
+                android:background="@drawable/bg_sidebarmenu"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:drawableStart="@drawable/ic_dashboard"
+                android:drawablePadding="12dp"/>
+            <TextView
+                android:id="@+id/btn_kelolamenu"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="12dp"
+                android:layout_margin="8dp"
+                android:layout_gravity="center_vertical"
+                android:text="KelolaMenu"
+                android:textColor="@color/sidebarTeks"
+                android:background="@drawable/bg_sidebarmenu"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:drawableStart="@drawable/ic_kelola"
+                android:drawablePadding="12dp"/>
+            <TextView
+                android:id="@+id/btn_kelolawifi"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="12dp"
+                android:layout_margin="8dp"
+                android:layout_gravity="center_vertical"
+                android:text="Kelola Wifi"
+                android:textColor="@color/sidebarTeks"
+                android:background="@drawable/bg_sidebarmenu"
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-medium"
+                android:drawableStart="@drawable/ic_wifi"
+                android:drawablePadding="12dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- MAIN CONTENT (Tablet Scaling) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_sidebar"
+        android:paddingStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/sidebar"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <include layout="@layout/kelolamenu2_spv" android:id="@+id/dsspv"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- BUTTON KEMBALI -->
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:text="Kembali"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF4B4B"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/sidebar"
+        app:layout_constraintEnd_toEndOf="@id/sidebar"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="25dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingEnd="16dp">
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="337dp"
+    android:layout_height="95dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:background="#743200" />
+
+        <ImageView
+            android:id="@+id/img_menu_item"
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Gambar Menu"
+            />
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingVertical="12dp">
+
+            <TextView
+                android:id="@+id/tv_nama_produk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoSizeMaxTextSize="16sp"
+                android:autoSizeStepGranularity="1sp"
+                android:autoSizeTextType="uniform"
+                android:ellipsize="end"
+                android:fontFamily="@font/manrope_bold"
+                android:maxLines="1"
+                android:text="kukubima energi anggur"
+                android:textColor="#000000"
+
+
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/manrope_regular"
+                android:text="Rp. 10.000"
+                android:textColor="#746565"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/catatan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/edit_square_20px_white"
+                    app:tint="#746565" />
+
+                <TextView
+                    android:id="@+id/tv_catatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/manrope_regular"
+                    android:text="Jangan terlalu pedas"
+                    android:textColor="#746565"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#F9F5F2"
+            android:padding="4dp">
+
+            <ImageButton
+                android:id="@+id/btn_kurang"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="#743200"
+                android:src="@drawable/remove_20px"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tv_kuantitas"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_tambah"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="#743200"
+                android:src="@drawable/add_20px"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
+
+    <ImageButton
+        android:id="@+id/btn_hapus_item"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Hapus Item"
+        android:scaleType="fitCenter"
+        android:src="@drawable/delete_40px"
+        app:tint="#FF0000" />
+
+</LinearLayout>

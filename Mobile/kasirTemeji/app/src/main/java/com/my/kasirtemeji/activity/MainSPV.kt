@@ -161,10 +161,6 @@ class MainSPV : AppCompatActivity() {
         }
     }
 
-// Panggil refreshKelolaMenu() setelah AddProdukFragment selesai
-// Di dalam setupClickListeners(), setelah btnAddProduct
-
-
     private fun selectMenu(selectedMenu: TextView) {
         // Reset semua menu
         resetAllMenus()
@@ -187,7 +183,7 @@ class MainSPV : AppCompatActivity() {
         btnKelolaWifi.background = resources.getDrawable(R.drawable.bg_sidebarmenu, null)
     }
 
-    internal fun showFragment(fragment: Fragment, tag: String) {
+    private fun showFragment(fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_content, fragment, tag)
             .commit()
@@ -201,8 +197,8 @@ class MainSPV : AppCompatActivity() {
             showFragment(KelolaMenuFragment(), "Kelola Menu")
             btnAddProduct.text = "+ Add Product"
         } else {
-            // Tampilkan logout confirmation
-            showLogoutConfirmation()
+            // Tampilkan exit confirmation
+            showExitAplikasi()
         }
     }
 
@@ -243,5 +239,20 @@ class MainSPV : AppCompatActivity() {
         finish()
     }
 
+
+    private fun showExitAplikasi() {
+        if (SessionManager.getInstance()?.isLoggedIn()==true) {
+            AlertDialog.Builder(this)
+                .setTitle("Keluar Aplikasi")
+                .setMessage("Apakah Anda yakin ingin keluar dari aplikasi?")
+                .setPositiveButton("Ya") { _, _ ->
+                    finishAffinity()
+                }
+                .setNegativeButton("Tidak", null)
+                .show()
+        } else {
+            super.onBackPressed()
+        }
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.my.kasirtemeji.adapters
+package com.my.kasirtemeji.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater

@@ -2,12 +2,11 @@ package com.my.kasirtemeji.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.my.kasirtemeji.MainActivity
 import com.my.kasirtemeji.R
@@ -28,8 +27,12 @@ class MainOwner : AppCompatActivity() {
     private lateinit var btnLihatUser: TextView
     private lateinit var btnLihatMenu: TextView
     private lateinit var btnBack: Button
-    private lateinit var mainContent: LinearLayout
-    private lateinit var headerLayout: LinearLayout
+    private lateinit var etCari: EditText
+    private lateinit var mainContent: ConstraintLayout
+
+    private lateinit var fKategori : LinearLayout
+    private lateinit var fRole : LinearLayout
+    private lateinit var fDate : LinearLayout
 
     private lateinit var apiRepository: ApiRepository
     private lateinit var networkUtils: NetworkUtils
@@ -66,8 +69,12 @@ class MainOwner : AppCompatActivity() {
         btnLihatUser = findViewById(R.id.btn_lihatuser)
         btnLihatMenu = findViewById(R.id.btn_lihatmenu)
         btnBack = findViewById(R.id.btn_back)
+        etCari = findViewById(R.id.et_search)
+        fKategori = findViewById(R.id.filter_kategori)
+        fRole = findViewById(R.id.filter_role)
+        fDate = findViewById(R.id.filter_date)
         mainContent = findViewById(R.id.main_content)
-        headerLayout = findViewById(R.id.header)
+
 
     }
     private fun setupDependencies() {
@@ -84,19 +91,19 @@ class MainOwner : AppCompatActivity() {
         btnDashboard.setOnClickListener {
             selectMenu(btnDashboard)
             showFragment(DashboardFragment(), "Dashboard")
-            //restoreDefaultHeader()
+            headerDashb()
         }
 
         btnLihatUser.setOnClickListener {
             selectMenu(btnLihatUser)
             showFragment(LihatUserFragment(), "Lihat User")
-            //setupLihatUserHeader()
+            headerLUser()
         }
 
         btnLihatMenu.setOnClickListener {
             selectMenu(btnLihatMenu)
             showFragment(LihatMenuFragment(), "Lihat Menu")
-            //setupLihatMenuHeader()
+            headerLMenu()
         }
 
         btnBack.setOnClickListener {
@@ -126,107 +133,34 @@ class MainOwner : AppCompatActivity() {
         btnLihatMenu.background = resources.getDrawable(R.drawable.bg_sidebarmenu, null)
     }
 
+    private fun headerDashb(){
+        etCari.text.clear()
+        etCari.setVisibility(View.GONE)
+        fKategori.setVisibility(View.GONE)
+        fRole.setVisibility(View.GONE)
+        fDate.setVisibility(View.GONE)
+    }
+    private fun headerLMenu(){
+        etCari.text.clear()
+        etCari.setVisibility(View.VISIBLE)
+        fKategori.setVisibility(View.VISIBLE)
+        fRole.setVisibility(View.GONE)
+        fDate.setVisibility(View.GONE)
+    }
+    private fun headerLUser(){
+        etCari.text.clear()
+        etCari.setVisibility(View.VISIBLE)
+        fKategori.setVisibility(View.GONE)
+        fRole.setVisibility(View.VISIBLE)
+        fDate.setVisibility(View.VISIBLE)
+    }
+
+
     private fun showFragment(fragment: Fragment, tag: String) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_content, fragment, tag)
             .commit()
     }
-
-    /*
-    private fun setupLihatUserHeader() {
-        // Hapus semua child kecuali logo dan app name
-        while (headerLayout.childCount > 2) {
-            headerLayout.removeViewAt(headerLayout.childCount - 1)
-        }
-
-        // Tambahkan search dan filter di header
-        val lihatUserHeader = layoutInflater.inflate(R.layout.header_lihat_user, null)
-        headerLayout.addView(lihatUserHeader)
-
-        // Setup listeners untuk header lihat user
-        setupLihatUserHeaderListeners(lihatUserHeader)
-    }
-
-    private fun setupLihatUserHeaderListeners(headerView: android.view.View) {
-        val etSearch = headerView.findViewById<android.widget.EditText>(R.id.et_search)
-        val btnFilterRole = headerView.findViewById<android.widget.TextView>(R.id.btn_filter_role)
-        val btnFilterDate = headerView.findViewById<android.widget.TextView>(R.id.btn_filter_date)
-
-        etSearch.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH) {
-                val searchText = etSearch.text.toString()
-                (supportFragmentManager.findFragmentByTag("Lihat User") as? LihatUserFragment)?.searchUser(searchText)
-                true
-            } else {
-                false
-            }
-        }
-
-        btnFilterRole.setOnClickListener {
-            showRoleFilterDialog()
-        }
-
-        btnFilterDate.setOnClickListener {
-            showDateFilterDialog()
-        }
-    }
-
-    private fun setupLihatMenuHeader() {
-        // Hapus semua child kecuali logo dan app name
-        while (headerLayout.childCount > 2) {
-            headerLayout.removeViewAt(headerLayout.childCount - 1)
-        }
-
-        // Tambahkan header khusus lihat menu
-        val lihatMenuHeader = layoutInflater.inflate(R.layout.header_lihat_menu, null)
-        headerLayout.addView(lihatMenuHeader)
-
-        // Setup listeners untuk header lihat menu
-        setupLihatMenuHeaderListeners(lihatMenuHeader)
-    }
-
-    private fun setupLihatMenuHeaderListeners(headerView: android.view.View) {
-        val etSearch = headerView.findViewById<android.widget.EditText>(R.id.et_search_menu)
-        val btnFilterCategory = headerView.findViewById<android.widget.TextView>(R.id.btn_filter_category)
-
-        etSearch.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH) {
-                val searchText = etSearch.text.toString()
-                (supportFragmentManager.findFragmentByTag("Lihat Menu") as? LihatMenuOwnerFragment)?.searchMenu(searchText)
-                true
-            } else {
-                false
-            }
-        }
-
-        btnFilterCategory.setOnClickListener {
-            showCategoryFilterDialog()
-        }
-    }
-
-    private fun restoreDefaultHeader() {
-        // Hapus semua child kecuali logo dan app name
-        while (headerLayout.childCount > 2) {
-            headerLayout.removeViewAt(headerLayout.childCount - 1)
-        }
-
-        // Tambahkan kembali welcome text
-        val tvWelcome = TextView(this).apply {
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                weight = 1f
-                marginStart = 16
-            }
-            text = "Selamat datang, Owner ${sessionManager.getNama() ?: sessionManager.getUsername()}"
-            textSize = 14f
-            setTextColor(resources.getColor(R.color.teksColor, null))
-        }
-
-        headerLayout.addView(tvWelcome, headerLayout.childCount - 1)
-    }
-*/
 
     private fun showLogoutConfirmation() {
         if (SessionManager.getInstance()?.isLoggedIn()==true) {
@@ -235,8 +169,6 @@ class MainOwner : AppCompatActivity() {
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { _, _ ->
                     doLogout()
-                    Toast.makeText(this@MainOwner, "Logout berhasil", Toast.LENGTH_SHORT).show()
-                    restartActivity()
                 }
                 .setNegativeButton("Tidak", null)
                 .show()
@@ -254,6 +186,7 @@ class MainOwner : AppCompatActivity() {
                 // Clear session lokal
                 SessionManager.getInstance()?.clearSession()
                 Toast.makeText(this@MainOwner, "Logout berhasil", Toast.LENGTH_SHORT).show()
+                restartActivity()
             }
         }
     }
@@ -264,6 +197,7 @@ class MainOwner : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
     override fun onBackPressed() {
         if (SessionManager.getInstance()?.isLoggedIn()==true) {
             AlertDialog.Builder(this)

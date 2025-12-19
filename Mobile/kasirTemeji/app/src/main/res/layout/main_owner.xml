@@ -33,6 +33,79 @@
             android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="#333333"/>
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:visibility="gone"
+            android:background="@drawable/search"
+            android:drawableStart="@drawable/ic_cari"
+            android:drawablePadding="8dp"
+            android:inputType="text"
+            android:hint="Cari"
+            android:paddingHorizontal="12dp" />
+        <!-- filter_kategori -->
+        <LinearLayout
+            android:id="@+id/filter_kategori"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center"
+            android:visibility="gone">
+            <!-- android:background="@drawable/filter_bg" -->
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                />
+            <!-- android:src="@drawable/kategoriproduk_owner" -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category Produc"
+                android:textSize="14sp"/>
+        </LinearLayout>
+        <!-- filter_role-->
+        <LinearLayout
+            android:id="@+id/filter_role"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginStart="12dp"
+            android:layout_weight="0.8"
+            android:visibility="gone"
+            >
+            <!-- android:background="@drawable/filter_bg" -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Role"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <!-- Date -->
+        <LinearLayout
+            android:id="@+id/filter_date"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:layout_marginStart="12dp"
+            android:layout_weight="0.8"
+            android:visibility="gone"
+            >
+            <!-- android:background="@drawable/filter_bg" -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <!-- SIDEBAR -->
@@ -105,7 +178,11 @@
         android:id="@+id/main_content"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#F1F1F1"
+        android:background="@drawable/bg_sidebar"
+        android:paddingStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/sidebar"
         app:layout_constraintTop_toBottomOf="@id/header"

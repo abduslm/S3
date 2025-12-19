@@ -54,11 +54,11 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
+            app:tint="@null"
             android:background="@drawable/bg_addproduct"
             android:paddingHorizontal="16dp"
             android:text="+ Add Product"
-            android:textColor="#FFFFFF"
-            app:tint="@null"/>
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
 

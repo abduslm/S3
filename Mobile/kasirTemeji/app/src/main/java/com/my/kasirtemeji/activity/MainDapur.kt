@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.my.kasirtemeji.R
-import com.my.kasirtemeji.adapters.DetailPesananAdapter
-import com.my.kasirtemeji.adapters.PesananDapurAdapter
+import com.my.kasirtemeji.adapter.DetailPesananAdapter
+import com.my.kasirtemeji.adapter.PesananDapurAdapter
 import com.my.kasirtemeji.api.RetrofitInstance
 import com.my.kasirtemeji.models.Order
 import com.my.kasirtemeji.models.OrderDetailItem

@@ -25,66 +25,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
-            android:id="@+id/headermenuowner"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#FFFFFF"
-            android:gravity="center_vertical"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp">
-
-            <!-- SEARCH -->
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="45dp"
-
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingStart="12dp"
-                android:paddingEnd="8dp">
-                <!-- android:background="@drawable/filter_bg" -->
-
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_cari"/>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Search"
-                    android:textSize="14sp"
-                    android:background="@android:color/transparent"
-                    android:paddingStart="8dp"/>
-            </LinearLayout>
-
-            <!-- ROLE -->
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="12dp"
-                android:gravity="center"
-                >
-                <!-- android:background="@drawable/filter_bg" -->
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    />
-                <!-- android:src="@drawable/kategoriproduk_owner" -->
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Category Produc"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_table_menu"
             android:layout_width="match_parent"
@@ -99,26 +39,51 @@
 
 
                 <TableLayout
-                    android:id="@+id/table_layout_menu"
+                    android:id="@+id/tabelmenu"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:stretchColumns="0">
 
                     <!-- Header -->
                     <TableRow android:background="#243447">
-                        <TextView android:text="Nama Produk" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="Nama Menu" android:textColor="#fff" android:padding="12dp"/>
                         <TextView android:text="Kategori" android:textColor="#fff" android:padding="12dp"/>
-                        <TextView android:text="Harga" android:textColor="#fff" android:padding="12dp"/>
-                        <TextView android:text="Stok" android:textColor="#fff" android:padding="12dp"/>
                         <TextView android:text="Status" android:textColor="#fff" android:padding="12dp"/>
-                        <TextView android:text="Ditambahkan" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="ID Menu" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="Stok" android:textColor="#fff" android:padding="12dp"/>
+                        <TextView android:text="Harga" android:textColor="#fff" android:padding="12dp"/>
                     </TableRow>
 
 
                 </TableLayout>
             </ScrollView>
         </com.google.android.material.card.MaterialCardView>
-
     </LinearLayout>
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!-- Empty State (jika tidak ada data) -->
+    <TextView
+        android:id="@+id/empty_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Belum ada data menu"
+        android:textSize="18sp"
+        android:textColor="#616161"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- BUTTON KEMBALI -->
 

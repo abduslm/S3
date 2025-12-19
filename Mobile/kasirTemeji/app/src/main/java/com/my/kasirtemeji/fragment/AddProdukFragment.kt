@@ -166,7 +166,7 @@ class AddProdukFragment : Fragment() {
 
     private fun setupSpinners() {
         // Setup kategori spinner
-        val categories = listOf("Makanan", "Minuman", "Snack", "Signature", "Lainnya")
+        val categories = listOf("Makanan", "Minuman", "Signature", "Lainnya")
         spinnerCategory = Spinner(requireContext()).apply {
             adapter = ArrayAdapter(
                 requireContext(),

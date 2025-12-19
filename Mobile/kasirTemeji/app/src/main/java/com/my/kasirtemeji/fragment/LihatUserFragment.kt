@@ -1,31 +1,33 @@
 package com.my.kasirtemeji.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
+import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.my.kasirtemeji.R
+import com.my.kasirtemeji.api.ApiRepository
 import com.my.kasirtemeji.api.RetrofitInstance
-import com.my.kasirtemeji.models.User
+import com.my.kasirtemeji.models.ApiResult
+import com.my.kasirtemeji.models.UserItem
+import com.my.kasirtemeji.util.NetworkUtils
 import com.my.kasirtemeji.util.SessionManager
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import retrofit2.Response
-import java.text.SimpleDateFormat
-import java.util.*
 
 class LihatUserFragment : Fragment() {
 
-    private lateinit var sessionManager: SessionManager
     private lateinit var tableLayout: TableLayout
-    private var userList: List<User> = emptyList()
+    private lateinit var progressBar: ProgressBar
+    private lateinit var emptyState: LinearLayout
+    private lateinit var apiRepository: ApiRepository
+    private lateinit var sessionManager: SessionManager
+
+    companion object {
+        fun newInstance() = LihatUserFragment()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,115 +40,202 @@ class LihatUserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sessionManager = SessionManager(requireContext())
-
-        val cardView = view.findViewById<com.google.android.material.card.MaterialCardView>(
-            R.id.card_table_user
-        )
-
-        tableLayout = cardView.findViewById(R.id.table_layout_user)
-
-        if (tableLayout == null) {
-            tableLayout = view.findViewById(R.id.table_layout_user)
-        }
-
+        setupViews(view)
+        setupApiRepository()
+        setupListeners()
+        loadUsersData()
     }
 
-    private fun findTableLayout(view: View): android.widget.TableLayout? {
-        return if (view is android.widget.TableLayout) {
-            view
-        } else if (view is ViewGroup) {
-            for (i in 0 until view.childCount) {
-                val child = view.getChildAt(i)
-                val found = findTableLayout(child)
-                if (found != null) return found
+    private fun setupViews(view: View) {
+        // Cari table layout
+        tableLayout = view.findViewById(R.id.table_layout_user)
+
+        // Buat progress bar programmatically jika tidak ada di XML
+        progressBar = ProgressBar(requireContext()).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+        }
+
+        // Tambah progress bar ke layout utama
+        val mainContent = view.findViewById<LinearLayout>(R.id.mainContent)
+        if (mainContent != null) {
+            mainContent.addView(progressBar, 0)
+        }
+
+        // Buat empty state programmatically
+        emptyState = LinearLayout(requireContext()).apply {
+            orientation = LinearLayout.VERTICAL
+            gravity = android.view.Gravity.CENTER
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+            )
+
+            val textView = TextView(requireContext()).apply {
+                text = "Belum ada data user"
+                textSize = 16f
+                setTextColor(ContextCompat.getColor(requireContext(), R.color.gray))
+                setPadding(0, 32.dpToPx(), 0, 0)
             }
-            null
-        } else {
-            null
+
+            addView(textView)
+        }
+
+        if (mainContent != null) {
+            mainContent.addView(emptyState)
+        }
+
+        // Sembunyikan dulu
+        progressBar.visibility = View.GONE
+        emptyState.visibility = View.GONE
+    }
+
+    private fun setupApiRepository() {
+        sessionManager = SessionManager.getInstance()!!
+        val networkUtils = NetworkUtils(requireContext())
+        apiRepository = ApiRepository(
+            RetrofitInstance.apiService,
+            networkUtils,
+            sessionManager
+        )
+    }
+
+    private fun setupListeners() {
+        // Tambah listener jika diperlukan (refresh, dll)
+    }
+
+    private fun loadUsersData() {
+        showLoading(true)
+
+        lifecycleScope.launch {
+            val result = apiRepository.getAllUsers()
+
+            if (result.status) {
+                val users = result.data ?: emptyList()
+                if (users.isEmpty()) {
+                    showEmptyState(true)
+                } else {
+                    showEmptyState(false)
+                    populateTable(users)
+                }
+            } else {
+                showError(result.message ?: "Gagal memuat data user")
+                showEmptyState(true)
+            }
+
+            showLoading(false)
         }
     }
 
-
-    private fun populateTable() {
+    private fun populateTable(users: List<UserItem>) {
         // Clear existing rows except header
         while (tableLayout.childCount > 1) {
             tableLayout.removeViewAt(1)
         }
 
-        userList.forEach { user ->
-            val tableRow = TableRow(requireContext()).apply {
-                layoutParams = TableRow.LayoutParams(
-                    TableRow.LayoutParams.MATCH_PARENT,
-                    TableRow.LayoutParams.WRAP_CONTENT
-                )
-                setBackgroundResource(R.color.white)
-                setPadding(0, 8.dpToPx(), 0, 8.dpToPx())
-            }
-
-            // Full Name
-            tableRow.addView(createTextView(user.nama ?: "-"))
-
-            // Email
-            tableRow.addView(createTextView(user.email ?: "-"))
-
-            // Username
-            tableRow.addView(createTextView(user.username))
-
-            // Role
-            val roleView = createTextView(user.level)
-            //roleView.setTextColor(getRoleColor(user.level))
-            tableRow.addView(roleView)
-
-            // Joined Date
-            //val joinedDate = formatDate(user.createdAt)
-            //tableRow.addView(createTextView(joinedDate))
-
-            // Last Active
-            //val lastActive = formatDate(user.updatedAt)
-            //tableRow.addView(createTextView(lastActive))
-
-            tableLayout.addView(tableRow)
+        users.forEach { user ->
+            addTableRow(user)
         }
     }
 
-    private fun createTextView(text: String): TextView {
+    private fun addTableRow(user: UserItem) {
+        val tableRow = TableRow(requireContext()).apply {
+            layoutParams = TableLayout.LayoutParams(
+                TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.WRAP_CONTENT
+            )
+            setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+
+            // Add click listener untuk edit/action jika diperlukan
+            setOnClickListener {
+                // Navigasi ke edit user jika diperlukan
+                // navigateToEditUser(user)
+            }
+        }
+
+        // Nama Column
+        tableRow.addView(createTableCell(user.nama ?: "-", 12f))
+
+        // Username Column
+        tableRow.addView(createTableCell(user.username, 12f))
+
+        // Level Column
+        val levelText = when (user.level.uppercase()) {
+            "OWNER" -> "Owner"
+            "SPV" -> "Supervisor"
+            "KASIR" -> "Kasir"
+            "DAPUR" -> "Dapur"
+            else -> user.level
+        }
+        val levelCell = createTableCell(levelText, 12f)
+        levelCell.setTextColor(getRoleColor(user.level))
+        tableRow.addView(levelCell)
+
+        // Email Column
+        tableRow.addView(createTableCell(user.email ?: "-", 12f))
+
+        // No. HP Column
+        tableRow.addView(createTableCell(user.noHp ?: "-", 12f))
+
+        // Status Column
+        val statusCell = createTableCell(user.status ?: "OFFLINE", 12f)
+        statusCell.setTextColor(getStatusColor(user.status ?: "OFFLINE"))
+        tableRow.addView(statusCell)
+
+        tableLayout.addView(tableRow)
+    }
+
+    private fun createTableCell(text: String, textSize: Float): TextView {
         return TextView(requireContext()).apply {
             this.text = text
-            textSize = 12f
-            setPadding(12.dpToPx(), 8.dpToPx(), 12.dpToPx(), 8.dpToPx())
+            this.textSize = textSize
+            gravity = android.view.Gravity.CENTER
+            setPadding(
+                12.dpToPx(),
+                16.dpToPx(),
+                12.dpToPx(),
+                16.dpToPx()
+            )
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
         }
     }
-/*
+
     private fun getRoleColor(role: String): Int {
         return when (role.uppercase()) {
-            "OWNER" -> resources.getColor(R.color.owner_color, null)
-            "SPV" -> resources.getColor(R.color.spv_color, null)
-            "KASIR" -> resources.getColor(R.color.kasir_color, null)
-            "DAPUR" -> resources.getColor(R.color.dapur_color, null)
-            else -> resources.getColor(R.color.gray, null)
-        }slm    }
-*/
-    private fun formatDate(dateString: String?): String {
-        return if (dateString.isNullOrEmpty()) "-" else {
-            try {
-                val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                val date = inputFormat.parse(dateString)
-                outputFormat.format(date ?: Date())
-            } catch (e: Exception) {
-                dateString
-            }
+            "OWNER" -> ContextCompat.getColor(requireContext(), R.color.owner_color)
+            "SPV" -> ContextCompat.getColor(requireContext(), R.color.spv_color)
+            "KASIR" -> ContextCompat.getColor(requireContext(), R.color.kasir_color)
+            "DAPUR" -> ContextCompat.getColor(requireContext(), R.color.dapur_color)
+            else -> ContextCompat.getColor(requireContext(), R.color.gray)
         }
+    }
+
+    private fun getStatusColor(status: String): Int {
+        return when (status.uppercase()) {
+            "ONLINE" -> ContextCompat.getColor(requireContext(), R.color.green)
+            "OFFLINE" -> ContextCompat.getColor(requireContext(), R.color.red)
+            else -> ContextCompat.getColor(requireContext(), R.color.gray)
+        }
+    }
+
+    private fun showLoading(show: Boolean) {
+        progressBar.visibility = if (show) View.VISIBLE else View.GONE
+        tableLayout.visibility = if (show) View.GONE else View.VISIBLE
+    }
+
+    private fun showEmptyState(show: Boolean) {
+        emptyState.visibility = if (show) View.VISIBLE else View.GONE
+        tableLayout.visibility = if (show) View.GONE else View.VISIBLE
+    }
+
+    private fun showError(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun Int.dpToPx(): Int {
         val density = resources.displayMetrics.density
         return (this * density).toInt()
-    }
-
-
-    private fun showErrorMessage(message: String) {
-        android.widget.Toast.makeText(requireContext(), message, android.widget.Toast.LENGTH_SHORT).show()
     }
 }

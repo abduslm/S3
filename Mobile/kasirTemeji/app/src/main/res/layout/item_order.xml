@@ -1,87 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    android:id="@+id/cardViews"
+    app:cardElevation="4dp"
+    android:background="@drawable/bg_card_selector"
+    android:foreground="?attr/selectableItemBackground">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
-
-        <!-- android:src="@drawable/sirupsusu"  -->
-        <ImageView
-            android:id="@+id/imgOrderItem"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-
-            android:scaleType="centerCrop"
-            android:layout_marginEnd="8dp"/>
-
-        <TextView
-            android:id="@+id/tvOrderItemName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imgOrderItem"
-            android:text="Indomie Rendang"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"/>
-
-        <TextView
-            android:id="@+id/tvOrderItemPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvOrderItemName"
-            android:layout_toEndOf="@id/imgOrderItem"
-            android:text="Rp. 10.000"
-            android:textColor="@android:color/darker_gray"/>
-
-        <TextView
-            android:id="@+id/tvOrderItemNotes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvOrderItemPrice"
-            android:layout_toEndOf="@id/imgOrderItem"
-            android:text="Jangan terlalu pedas"
-            android:textSize="12sp"
-            android:textStyle="italic"/>
-
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:gravity="center_horizontal">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical">
-
-            <Button
-                android:id="@+id/btnDecrement"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:text="-"/>
+            android:gravity="end">
             <TextView
-                android:id="@+id/tvQuantity"
+                android:id="@+id/txtStok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1"
-                android:textSize="16sp"
+                android:text="0"
                 android:textStyle="bold"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"/>
-            <Button
-                android:id="@+id/btnIncrement"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:text="+"/>
+                android:textSize="8sp"
+                android:textColor="#000000"
+                android:layout_gravity="end" />
         </LinearLayout>
-
+        <!-- Image -->
         <ImageView
-            android:id="@+id/btnDelete"
+            android:id="@+id/imgMenu"
+            android:layout_width="80dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/es_teh" />
+
+        <!-- Nama Menu -->
+        <TextView
+            android:id="@+id/txtNama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_sampah"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@id/tvOrderItemNotes"
-            android:layout_marginTop="8dp"/> </RelativeLayout>
+            android:layout_marginTop="8dp"
+            android:text="Susu Sirup"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:gravity="center" />
+
+        <!-- Harga -->
+        <TextView
+            android:id="@+id/txtHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Rp. 10.000"
+            android:textSize="12sp"
+            android:textColor="#777777"
+            android:gravity="center" />
+
+    </LinearLayout>
+
 </androidx.cardview.widget.CardView>

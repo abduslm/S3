@@ -210,7 +210,7 @@ data class OrderRequest(
 )
 
 /**
- * Model untuk detail item dalam pesanan (response)
+ * Model untuk detail item dalam pesanan (response) - Update
  */
 data class OrderDetailItem(
     @SerializedName("id_detail") val idDetail: Int,
@@ -218,11 +218,12 @@ data class OrderDetailItem(
     @SerializedName("nama_menu") val namaMenu: String,
     @SerializedName("jumlah") val jumlah: Int,
     @SerializedName("harga") val harga: Double,
-    @SerializedName("subtotal") val subtotal: Double
+    @SerializedName("subtotal") val subtotal: Double,
+    @SerializedName("catatan") val catatan: String? = null // Tambah field catatan
 )
 
 /**
- * Model untuk pesanan
+ * Model untuk pesanan - Update
  */
 data class Order(
     @SerializedName("id_pesanan") val id: Int,
@@ -231,9 +232,9 @@ data class Order(
     @SerializedName("status_pesanan") val statusPesanan: String,
     @SerializedName("id_userMobile") val idUserMobile: Int,
     @SerializedName("nama_kasir") val namaKasir: String,
-    @SerializedName("details") val details: List<OrderDetailItem>
+    @SerializedName("details") val details: List<OrderDetailItem>,
+    @SerializedName("catatan_umum") val catatanUmum: String? = null // Catatan umum pesanan
 )
-
 /**
  * Model untuk response order operations
  */
@@ -692,11 +693,10 @@ enum class MenuStatus {
 object MenuCategory {
     const val MAKANAN = "Makanan"
     const val MINUMAN = "Minuman"
-    const val SNACK = "Snack"
     const val SIGNATURE = "Signature"
     const val LAINNYA = "Lainnya"
 
-    val ALL_CATEGORIES = listOf(MAKANAN, MINUMAN, SNACK, LAINNYA)
+    val ALL_CATEGORIES = listOf(MAKANAN, MINUMAN, SIGNATURE, LAINNYA)
 }
 
 // ============================================
@@ -803,6 +803,67 @@ data class DataFilter(
     val sortBy: String = "id",
     val sortOrder: String = "desc"
 )
+
+/**
+ * Model untuk WiFi data
+ */
+data class Wifi(
+    @SerializedName("id_wifi") val id: Int,
+    @SerializedName("nama_wifi") val namaWifi: String,
+    @SerializedName("password_wifi") val password: String,
+    @SerializedName("created_at") val createdAt: String? = null,
+    @SerializedName("updated_at") val updatedAt: String? = null
+)
+/**
+ * Response untuk get WiFi list
+ * data langsung berisi List<Wifi>
+ */
+data class WifiResponse(
+    @SerializedName("status") val status: Boolean,
+    @SerializedName("message") val message: String?,
+    @SerializedName("data") val data: List<Wifi>?,  // <-- LANGSUNG LIST!
+    @SerializedName("timestamp") val timestamp: String? = null
+)
+
+/**
+ * Response untuk operasi WiFi (add/update/delete)
+ * data berisi object
+ */
+data class WifiOperationResponse(
+    @SerializedName("status") val status: Boolean,
+    @SerializedName("message") val message: String?, // <-- OBJECT untuk operasi
+    @SerializedName("timestamp") val timestamp: String? = null,
+    @SerializedName("data") val data: WifiData?
+)
+
+/**
+ * Data wrapper untuk operasi WiFi
+ */
+data class WifiData(
+    @SerializedName("id_wifi") val id: Int? = null,
+    @SerializedName("nama_wifi") val namaWifi: String? = null,
+    @SerializedName("password_wifi") val password: String? = null,
+    @SerializedName("wifi") val wifi: Wifi? = null
+)
+
+// Request tambah WiFi
+data class WifiRequest(
+    @SerializedName("nama_wifi") val nama_wifi: String? = null,
+    @SerializedName("password_wifi") val password_wifi: String? = null
+)
+
+// Request update WiFi
+data class WifiUpdateRequest(
+    @SerializedName("id_wifi") val id_wifi: Int? = null,
+    @SerializedName("nama_wifi") val nama_wifi: String? = null,
+    @SerializedName("password_wifi") val password_wifi: String? = null
+)
+
+// Request delete WiFi
+data class WifiDeleteRequest(
+    @SerializedName("id") val id_wifi: Int? = null
+)
+
 
 
 // ============================================

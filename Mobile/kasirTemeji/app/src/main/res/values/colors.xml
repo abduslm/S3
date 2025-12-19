@@ -45,4 +45,14 @@
     <color name="gray">#9E9E9E</color>
     <color name="gray_dark">#616161</color>
 
+    <color name="owner_color">#FF6F00</color> <!-- Orange -->
+    <color name="spv_color">#2196F3</color> <!-- Blue -->
+    <color name="kasir_color">#4CAF50</color> <!-- Green -->
+    <color name="dapur_color">#9C27B0</color> <!-- Purple -->
+
+    <color name="brown_primary">#844B16</color>
+    <color name="light_red">#FFEBEE</color>
+    <color name="dark_red">#C62828</color>
+    <color name="light_yellow">#FFF8E1</color>
+    <color name="dark_orange">#EF6C00</color>
 </resources>

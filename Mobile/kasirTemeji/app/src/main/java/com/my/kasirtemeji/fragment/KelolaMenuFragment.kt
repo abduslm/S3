@@ -18,7 +18,6 @@ import com.my.kasirtemeji.util.NetworkUtils
 import com.my.kasirtemeji.util.SessionManager
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
-import androidx.navigation.fragment.findNavController
 import com.my.kasirtemeji.activity.MainSPV
 import java.util.*
 
@@ -134,7 +133,7 @@ class KelolaMenuFragment : Fragment() {
 
         // ImageView for product
         val imageView = ImageView(requireContext()).apply {
-            layoutParams = LinearLayout.LayoutParams(48, 48)
+            layoutParams = LinearLayout.LayoutParams(75, 75)
             scaleType = ImageView.ScaleType.CENTER_CROP
             setPadding(4, 4, 8, 4)
         }

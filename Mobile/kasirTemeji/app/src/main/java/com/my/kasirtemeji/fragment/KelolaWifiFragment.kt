@@ -1,13 +1,10 @@
 package com.my.kasirtemeji.fragment
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -23,14 +20,14 @@ import com.my.kasirtemeji.util.SessionManager
 import kotlinx.coroutines.launch
 
 class KelolaWifiFragment : Fragment() {
-/*
+
     // Views
     private lateinit var rvWifiList: RecyclerView
     private lateinit var pbLoading: ProgressBar
     private lateinit var tvEmptyState: TextView
     private lateinit var etNamaWifi: EditText
     private lateinit var etPasswordWifi: EditText
-    private lateinit var tvWifiId: TextView // Hidden ID untuk edit mode
+    private lateinit var tvWifiId: TextView
     private lateinit var btnReset: Button
     private lateinit var btnSimpan: Button
 
@@ -68,17 +65,12 @@ class KelolaWifiFragment : Fragment() {
     }
 
     private fun setupViews(view: View) {
-        // RecyclerView dan Loading
         rvWifiList = view.findViewById(R.id.rv_wifi_list)
         pbLoading = view.findViewById(R.id.pb_loading)
         tvEmptyState = view.findViewById(R.id.tv_empty_state)
-
-        // Form Input
         etNamaWifi = view.findViewById(R.id.et_nama_wifi)
         etPasswordWifi = view.findViewById(R.id.et_password_wifi)
         tvWifiId = view.findViewById(R.id.tv_wifi_id)
-
-        // Buttons
         btnReset = view.findViewById(R.id.btn_reset)
         btnSimpan = view.findViewById(R.id.btn_simpan)
     }
@@ -96,14 +88,8 @@ class KelolaWifiFragment : Fragment() {
     private fun setupRecyclerView() {
         wifiAdapter = WifiAdapter(
             wifiList = wifiList,
-            onItemClick = { wifi ->
-                // Edit mode ketika item diklik
-                setEditMode(wifi)
-            },
-            onDeleteClick = { wifi ->
-                // Hapus WiFi
-                deleteWifi(wifi.id)
-            }
+            onItemClick = { wifi -> setEditMode(wifi) },
+            onDeleteClick = { wifi -> deleteWifi(wifi.id) }
         )
 
         rvWifiList.apply {
@@ -114,19 +100,10 @@ class KelolaWifiFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        // Reset Button
-        btnReset.setOnClickListener {
-            resetForm()
-        }
-
-        // Simpan Button
+        btnReset.setOnClickListener { resetForm() }
         btnSimpan.setOnClickListener {
             if (validateForm()) {
-                if (isEditMode) {
-                    updateWifi()
-                } else {
-                    addWifi()
-                }
+                if (isEditMode) updateWifi() else addWifi()
             }
         }
     }
@@ -135,14 +112,12 @@ class KelolaWifiFragment : Fragment() {
         val namaWifi = etNamaWifi.text.toString().trim()
         val password = etPasswordWifi.text.toString().trim()
 
-        // Validasi Nama WiFi
         if (namaWifi.isEmpty()) {
             etNamaWifi.error = "Nama WiFi tidak boleh kosong"
             etNamaWifi.requestFocus()
             return false
         }
 
-        // Validasi Password
         if (password.isEmpty()) {
             etPasswordWifi.error = "Password tidak boleh kosong"
             etPasswordWifi.requestFocus()
@@ -165,64 +140,49 @@ class KelolaWifiFragment : Fragment() {
 
         isEditMode = false
         currentWifiId = 0
-
-        // Reset button text
         btnSimpan.text = "Simpan"
 
-        // Clear errors
         etNamaWifi.error = null
         etPasswordWifi.error = null
 
-        Toast.makeText(requireContext(), "Form telah direset", Toast.LENGTH_SHORT).show()
+        showToast("Form telah direset")
     }
 
     private fun setEditMode(wifi: Wifi) {
         isEditMode = true
         currentWifiId = wifi.id
 
-        // Isi form dengan data WiFi
         etNamaWifi.setText(wifi.namaWifi)
         etPasswordWifi.setText(wifi.password)
         tvWifiId.text = wifi.id.toString()
-
-        // Ubah text button
         btnSimpan.text = "Update"
 
-        // Scroll ke form
         etNamaWifi.requestFocus()
-
-        Toast.makeText(requireContext(), "Edit mode: ${wifi.namaWifi}", Toast.LENGTH_SHORT).show()
+        showToast("Edit mode: ${wifi.namaWifi}")
     }
 
     private fun loadWifiData() {
         showLoading(true)
 
         lifecycleScope.launch {
-            // Ganti ini dengan fungsi yang benar dari ApiRepository
-            // Anda perlu membuat fungsi getWifiList() yang mengembalikan ApiResult<List<Wifi>>
             val result = apiRepository.getWifiList()
 
-            // Handle result sesuai dengan ApiResult
-            when (result) {
-                is ApiResult.Success -> {
-                    val data = result.data // Ini akan berisi List<Wifi>
-                    wifiList.clear()
-                    data?.let { list ->
-                        wifiList.addAll(list)
-                    }
+            // Cek status
+            if (result.status) { // result.status == true
+                val data = result.data ?: emptyList()
+                wifiList.clear()
+                wifiList.addAll(data)
+                wifiAdapter.notifyDataSetChanged()
 
-                    wifiAdapter.notifyDataSetChanged()
-
-                    if (wifiList.isEmpty()) {
-                        showEmptyState(true)
-                    } else {
-                        showEmptyState(false)
-                    }
+                if (wifiList.isEmpty()) {
+                    showLoading(true)
+                } else {
+                    showLoading(false)
                 }
-                is ApiResult.Error -> {
-                    showError(result.message ?: "Gagal memuat data WiFi")
-                    showEmptyState(true)
-                }
+            } else {
+                // Error
+                showError(result.message ?: "Gagal memuat data WiFi")
+                showLoading(true)
             }
 
             showLoading(false)
@@ -233,30 +193,26 @@ class KelolaWifiFragment : Fragment() {
         val namaWifi = etNamaWifi.text.toString().trim()
         val password = etPasswordWifi.text.toString().trim()
 
+        // Validasi sebelum lanjut
+        if (!validateForm()) {
+            return
+        }
+
         showLoading(true)
 
         lifecycleScope.launch {
-            // Ganti ini dengan fungsi yang benar dari ApiRepository
             val result = apiRepository.addWifi(namaWifi, password)
 
-            showLoading(false)
-
-            when (result) {
-                is ApiResult.Success -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "WiFi berhasil ditambahkan",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    // Reset form dan reload data
-                    resetForm()
-                    loadWifiData()
-                }
-                is ApiResult.Error -> {
-                    showError(result.message ?: "Gagal menambahkan WiFi")
-                }
+            // Cek status result
+            if (result.status) { // Jika sukses
+                showToast("WiFi berhasil ditambahkan")
+                resetForm()
+                loadWifiData() // Reload data dari server
+            } else { // Jika error
+                showError(result.message ?: "Gagal menambahkan WiFi")
             }
+
+            showLoading(false)
         }
     }
 
@@ -264,35 +220,30 @@ class KelolaWifiFragment : Fragment() {
         val namaWifi = etNamaWifi.text.toString().trim()
         val password = etPasswordWifi.text.toString().trim()
 
+        // Validasi sebelum lanjut
+        if (!validateForm()) {
+            return
+        }
+
         showLoading(true)
 
         lifecycleScope.launch {
-            // Ganti ini dengan fungsi yang benar dari ApiRepository
             val result = apiRepository.updateWifi(currentWifiId, namaWifi, password)
 
-            showLoading(false)
-
-            when (result) {
-                is ApiResult.Success -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "WiFi berhasil diupdate",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    // Reset form dan reload data
-                    resetForm()
-                    loadWifiData()
-                }
-                is ApiResult.Error -> {
-                    showError(result.message ?: "Gagal mengupdate WiFi")
-                }
+            // Cek status result
+            if (result.status) { // Jika sukses
+                showToast("WiFi berhasil diupdate")
+                resetForm()
+                loadWifiData() // Reload data dari server
+            } else { // Jika error
+                showError(result.message ?: "Gagal mengupdate WiFi")
             }
+
+            showLoading(false)
         }
     }
 
     private fun deleteWifi(wifiId: Int) {
-        // Show confirmation dialog
         androidx.appcompat.app.AlertDialog.Builder(requireContext())
             .setTitle("Hapus WiFi")
             .setMessage("Apakah Anda yakin ingin menghapus WiFi ini?")
@@ -310,48 +261,46 @@ class KelolaWifiFragment : Fragment() {
         showLoading(true)
 
         lifecycleScope.launch {
-            // Ganti ini dengan fungsi yang benar dari ApiRepository
             val result = apiRepository.deleteWifi(wifiId)
 
-            showLoading(false)
+            // Cek status result
+            if (result.status) { // Jika sukses
+                showToast("WiFi berhasil dihapus")
+                loadWifiData() // Reload data dari server
 
-            when (result) {
-                is ApiResult.Success -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "WiFi berhasil dihapus",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    // Reload data
-                    loadWifiData()
-
-                    // Jika yang dihapus sedang di-edit, reset form
-                    if (currentWifiId == wifiId) {
-                        resetForm()
-                    }
+                // Jika yang dihapus sedang di-edit, reset form
+                if (currentWifiId == wifiId) {
+                    resetForm()
                 }
-                is ApiResult.Error -> {
-                    showError(result.message ?: "Gagal menghapus WiFi")
-                }
+            } else { // Jika error
+                showError(result.message ?: "Gagal menghapus WiFi")
             }
+
+            showLoading(false)
         }
     }
 
-    private fun showLoading(show: Boolean) {
-        pbLoading.visibility = if (show) View.VISIBLE else View.GONE
-        btnSimpan.isEnabled = !show
-        btnReset.isEnabled = !show
-    }
-
-    private fun showEmptyState(show: Boolean) {
-        tvEmptyState.visibility = if (show) View.VISIBLE else View.GONE
-        rvWifiList.visibility = if (show) View.GONE else View.VISIBLE
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
     private fun showError(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
+
+    private fun showLoading(show: Boolean) {
+        pbLoading.visibility = if (show) View.VISIBLE else View.GONE
+
+        // Disable/Enable buttons saat loading
+        btnSimpan.isEnabled = !show
+        btnReset.isEnabled = !show
+
+        // Disable/Enable form input
+        etNamaWifi.isEnabled = !show
+        etPasswordWifi.isEnabled = !show
+    }
+
+
 
     // WifiAdapter class
     inner class WifiAdapter(
@@ -378,15 +327,8 @@ class KelolaWifiFragment : Fragment() {
             holder.wifiName.text = wifi.namaWifi
             holder.wifiUsername.text = "Password: ${wifi.password}"
 
-            // Set click listener untuk edit (klik pada item)
-            holder.itemView.setOnClickListener {
-                onItemClick(wifi)
-            }
-
-            // Set click listener untuk delete
-            holder.btnDelete.setOnClickListener {
-                onDeleteClick(wifi)
-            }
+            holder.itemView.setOnClickListener { onItemClick(wifi) }
+            holder.btnDelete.setOnClickListener { onDeleteClick(wifi) }
         }
 
         override fun getItemCount(): Int = wifiList.size
@@ -396,6 +338,4 @@ class KelolaWifiFragment : Fragment() {
             notifyDataSetChanged()
         }
     }
-
- */
 }
